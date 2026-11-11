@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="zh-Hans"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1,viewport-fit=cover" name="viewport"/><meta content="#0c1425" name="theme-color"/><title>MapleStory Coach 5.6 — Kaiser / OVERDRIVE</title>
+<style>
+:root{color-scheme:dark;--bg:#0b1322;--card:#14223a;--card2:#182b45;--text:#f0f5ff;--muted:#a2b2cc;--line:#304361;--accent:#87e3be;--gold:#f6cf7b;--blue:#9dbdff}*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 90% -10%,#223b63 0%,transparent 39%),#0b1322;font:15px/1.5 system-ui,-apple-system,"Segoe UI",Arial,sans-serif;color:var(--text)}button,input,select{font:inherit}button{cursor:pointer}.wrap{max-width:1100px;margin:auto;padding:21px 16px 70px}header{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:19px}header h1{font-size:24px;letter-spacing:-.6px;margin:0}header small{color:var(--muted)}.mark{color:var(--accent)}.tabs{display:flex;gap:9px;overflow:auto;padding:0 0 13px;border-bottom:1px solid var(--line);margin-bottom:21px}.tab{background:transparent;color:var(--muted);border:1px solid var(--line);border-radius:10px;padding:9px 14px;white-space:nowrap}.tab.on{color:#07192a;background:var(--accent);border-color:var(--accent);font-weight:800}.view{display:none}.view.on{display:block}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.card{background:linear-gradient(135deg,rgba(33,52,81,.87),rgba(20,34,58,.97));border:1px solid var(--line);border-radius:16px;padding:16px}.card h2{font-size:17px;margin:0 0 11px}.card h3{font-size:15px;margin:0 0 6px}.muted{color:var(--muted)}.hint{font-size:12px;color:var(--muted)}.metric{font-size:25px;font-weight:850;letter-spacing:-.7px;color:var(--accent)}.metric.gold{color:var(--gold)}.row{display:flex;align-items:center;justify-content:space-between;gap:12px}.gap{display:grid;gap:12px}.pill{font-size:11px;color:var(--accent);background:#174a46;padding:4px 8px;border-radius:99px;white-space:nowrap}.pill.blue{color:var(--blue);background:#26385a}.pill.gold{color:var(--gold);background:#453820}.btn{background:#293c5d;color:var(--text);border:1px solid #435979;border-radius:10px;padding:9px 12px}.btn.primary{background:var(--accent);border-color:var(--accent);color:#061b20;font-weight:800}.btn.small{font-size:12px;padding:5px 8px}label.field{display:grid;gap:5px;font-size:12px;color:var(--muted)}input,select{min-width:0;width:100%;border:1px solid #3d5271;border-radius:9px;padding:9px;color:var(--text);background:#101e32}input[type=checkbox]{width:18px;height:18px;accent-color:var(--accent);cursor:pointer}.formgrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}.divider{height:1px;background:var(--line);margin:12px 0}.progress{height:9px;border-radius:99px;background:#30435a;overflow:hidden}.progress>div{height:100%;background:linear-gradient(90deg,#57cba3,#a1e7ca);transition:width .2s}.task{display:flex;gap:10px;padding:10px;border:1px solid var(--line);border-radius:11px;align-items:flex-start}.task span{flex:1}.task.done{opacity:.65}.subtitle{font-size:19px;margin:5px 0 12px}.boss-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.boss{border:1px solid var(--line);background:#15253c;border-radius:13px;padding:12px}.boss .labelrow{display:flex;align-items:center;justify-content:space-between;gap:6px}.boss-name{font-weight:780}.meta{font-size:12px;color:var(--muted);margin-top:6px}.boss p{font-size:12px;color:#c3cee0;margin:7px 0}.selectrow{display:flex;align-items:center;gap:8px;padding-top:9px;border-top:1px solid var(--line);margin-top:9px}.selectrow label{flex:1;font-size:12px;color:var(--muted)}.selectrow select{width:85px;padding:5px}.selectrow input[type=number]{width:110px;padding:5px}.section-title{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:18px 0 9px}.section-title h2{margin:0;font-size:17px}.chipbar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px}.chip{padding:6px 10px;border-radius:99px;border:1px solid var(--line);font-size:12px;background:#162740;color:#c8d8ee}.chip.on{background:#284e4a;color:var(--accent);border-color:#3d8d7b}.alert{background:#1b283f;border-left:3px solid var(--gold);border-radius:7px;padding:10px 12px;color:#d9e1ed;font-size:13px}.foot{color:var(--muted);font-size:12px;line-height:1.8;margin-top:20px}.foot a,.card a{color:var(--blue)}.spaced{margin-top:16px}.summaryline{display:flex;gap:8px;flex-wrap:wrap}.summaryline .pill{padding:7px 10px}.notice{background:rgba(89,192,163,.12);border:1px solid #356d63;padding:10px 13px;border-radius:10px;font-size:13px}.responsive{overflow:auto}.table{width:100%;border-collapse:collapse;white-space:nowrap;font-size:13px}.table td,.table th{padding:8px;border-bottom:1px solid var(--line);text-align:left}.table th{font-size:12px;color:var(--muted)}.table td:last-child,.table th:last-child{text-align:right}.big{font-size:29px;font-weight:850;line-height:1.2}.right{text-align:right}summary{cursor:pointer;font-weight:650}@media(max-width:780px){.grid{grid-template-columns:1fr}.formgrid{grid-template-columns:repeat(2,minmax(0,1fr))}.boss-grid{grid-template-columns:1fr}header h1{font-size:21px}.card{padding:13px}}@media(max-width:370px){.formgrid{grid-template-columns:1fr}}
+
+/* v5.1: gentle dailies and weeklies */
+.routine-hero{background:linear-gradient(125deg,#1e3e48,#14223a);border-color:#35665f}
+.routine-heading{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.routine-heading p{margin:5px 0 0}
+.routine-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px;margin-top:13px}
+.routine-statbar{display:flex;gap:9px;flex-wrap:wrap;margin:14px 0 0}
+.routine-stat{padding:10px 13px;background:#112e3a;border:1px solid #37615e;border-radius:12px;min-width:155px}
+.routine-stat .bigmini{font-size:21px;color:var(--accent);font-weight:800}
+.routine-stat .hint{display:block}
+.routine-item{display:flex;align-items:flex-start;gap:10px;padding:12px 0;border-top:1px solid var(--line);cursor:pointer}
+.routine-item:first-child{border-top:0}
+.routine-item input{flex:none;margin-top:3px}
+.routine-item>span:nth-child(2){min-width:0;flex:1}
+.routine-item strong{display:block;font-size:14px}
+.routine-item small{display:block;margin-top:3px;line-height:1.5}
+.routine-item .minute{flex:none;font-size:12px;color:var(--gold);background:#453820;padding:3px 7px;border-radius:6px;white-space:nowrap}
+.routine-item.done strong{text-decoration:line-through;opacity:.7}
+.routine-item.done small,.routine-item.done .minute{opacity:.6}
+.routine-subtitle{display:flex;justify-content:space-between;gap:10px;align-items:center}
+.routine-subtitle h2{margin-bottom:5px}
+.routine-checkstat{font-size:13px;color:var(--accent)}
+.routine-list{margin-top:12px}
+.routine-empty{padding:15px 0;font-size:13px;color:var(--muted)}
+.routine-note{border-left:3px solid var(--accent);padding:8px 11px;background:#16353f;border-radius:8px;margin-top:14px;font-size:13px;color:#d7e9e9}
+.routine-optional-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;margin-top:10px}
+.routine-optional-grid h3{margin-bottom:5px}
+.mini-legend{font-size:12px;color:var(--muted);margin:7px 0}
+.important{color:var(--accent)}
+@media(max-width:780px){.routine-grid,.routine-optional-grid{grid-template-columns:1fr}.routine-stat{flex:1}}
+
+/* v5.2: live-event snapshot and honest per-class skill planning */
+.event-hero,.skill-hero{background:linear-gradient(125deg,#1b3d48,#13233d);border-color:#37665d}
+.event-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.event-card{border:1px solid var(--line);background:#142640;border-radius:14px;padding:14px;min-width:0}
+.event-card.urgent{border-color:#8a7652;background:linear-gradient(125deg,#2f3040,#17283b)}
+.event-card.finished{opacity:.65}
+.event-name{font-weight:780;font-size:15px;line-height:1.4}
+.event-card p{font-size:13px;color:#c6d3e6;margin:8px 0}
+.event-tags{display:flex;gap:6px;align-items:center;flex-wrap:wrap;margin:8px 0;font-size:12px;color:#b4c5dc}
+.event-card .event-check{display:flex;align-items:center;gap:8px;padding:8px 0 0;cursor:pointer;font-size:13px}
+.event-card a,.quick-event-list a{color:var(--blue)}
+.event-card .event-bottom{display:flex;align-items:center;justify-content:space-between;gap:6px;flex-wrap:wrap;border-top:1px solid var(--line);margin-top:10px;padding-top:10px;font-size:12px}
+.quick-event{display:flex;gap:9px;align-items:center;padding:9px 0;border-top:1px solid var(--line)}
+.quick-event:first-child{border-top:0}
+.quick-event .quick-text{flex:1;min-width:0;font-size:13px}
+.quick-event .quick-text strong{display:block}
+.quick-event .quick-text small{display:block;color:var(--muted)}
+.quick-event input{flex:none}
+.event-quick{border-color:#476875}
+.skill-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.skill-grid>.card{min-width:0}
+.skill-grid .card h2{margin:0 0 12px}
+.compact-form{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.compact-form .wide{grid-column:span 2}
+.job-overview{padding:13px;background:#112f3b;border-radius:12px;border:1px solid #315860}
+.job-overview .kpi{color:var(--accent);font-weight:800;font-size:22px}
+.job-overview .chipbox{display:flex;gap:6px;flex-wrap:wrap;margin:7px 0}
+.job-overview p{font-size:13px;color:#c9d6e3;margin:8px 0 0}
+.skill-flag{padding:12px;border-radius:10px;background:#152b42;border:1px solid var(--line);font-size:13px;line-height:1.7}
+.skill-flag strong{color:var(--accent)}
+@media(max-width:780px){.event-grid,.skill-grid{grid-template-columns:1fr}}
+
+/* v5.3 character sync */
+.sync-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.sync-profile{background:#112c3c;border:1px solid #315e67;border-radius:14px;padding:14px}
+.sync-profile .headline{font-size:25px;font-weight:850;color:var(--accent)}
+.sync-profile .sync-stat{font-size:12px;color:#c3d9e4;padding:7px 0;border-bottom:1px solid #315368}
+.sync-profile .sync-stat strong{float:right;color:#eaf7fa}
+.sync-status{border-radius:11px;padding:12px;border:1px solid #35556c;background:#15283c;color:#b9d1e6;font-size:13px;line-height:1.6}
+.sync-status[data-type=success]{background:#143c37;color:#b8f3de;border-color:#3e8778}
+.sync-status[data-type=error]{background:#423026;color:#ffe1c3;border-color:#906344}
+.sync-key-note{padding:10px;border-left:3px solid #f6cf7b;background:#272d3d;border-radius:7px;color:#f5dfb6;font-size:12px}
+.sync-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px;align-items:center}
+.sync-json{width:100%;background:#101e32;border:1px solid #3d5271;color:var(--text);padding:10px;border-radius:9px;min-height:130px;resize:vertical;font:12px/1.5 ui-monospace,Consolas,monospace}
+.sync-grid .card{min-width:0}
+@media(max-width:780px){.sync-grid{grid-template-columns:1fr}}
+
+/* v5.4 Boss Guide + Pass Finder */
+.boss-extra-controls{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.boss-progress{background:linear-gradient(110deg,#183c3c,#182b46)}
+.boss-tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:8px}.boss-tags span{font-size:11px;border:1px solid #3e5470;border-radius:20px;padding:2px 7px;color:#c9dbed}
+.boss-v54{position:relative;overflow:hidden}.boss-v54.future-boss{border-color:#8c6b42}.boss-v54 .b-head{display:flex;justify-content:space-between;gap:8px;align-items:flex-start}
+.boss-v54 .b-head strong{font-size:15px}.boss-v54 .b-head small{display:block;color:var(--muted);font-size:11px;margin-top:2px}
+.boss-v54 .bstat{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px;margin:10px 0}
+.boss-v54 .bstat>div{background:#122035;border:1px solid #2d4563;padding:8px;border-radius:9px}
+.boss-v54 .bstat small{display:block;color:var(--muted);font-size:11px}.boss-v54 .bstat strong{font-size:15px}
+.boss-v54 details{font-size:12px;margin-top:9px;color:#d6e3ed}.boss-v54 summary{font-size:12px;color:var(--blue)}
+.boss-v54 .boss-actions{display:flex;align-items:center;justify-content:space-between;gap:6px;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:10px;margin-top:10px}.boss-v54 .boss-actions .btn{flex:1}
+.boss-v54 .boss-actions .btn:disabled{opacity:.5;cursor:not-allowed}.boss-detail{font-size:12px;line-height:1.65;color:#c8d7e8}
+.pass-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.pass-hero{background:linear-gradient(125deg,#2c364b,#182840);border-color:#746343}
+.pass-item{border:1px solid #39536f;border-radius:14px;padding:16px;background:#172940;min-width:0}.pass-item.top-pass{border-color:#407c6b;background:linear-gradient(130deg,#1e3941,#16273c)}
+.pass-item .pass-name{font-size:17px;font-weight:800}.pass-item p{color:#c9d7e6;font-size:13px}.pass-item .pass-note{font-size:12px;color:var(--muted);line-height:1.6}
+.pass-item .pass-bottom{display:flex;gap:9px;flex-wrap:wrap;align-items:center;margin-top:12px;border-top:1px solid var(--line);padding-top:12px}
+.pass-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px;margin-top:14px}.pass-stat{background:#13273e;border:1px solid #345069;border-radius:11px;padding:11px;min-width:0}
+.pass-stat small{display:block;font-size:11px;color:var(--muted)}.pass-stat strong{display:block;font-size:19px;color:var(--accent);margin-top:3px}
+.pass-price{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--muted)}.pass-price input{max-width:105px}
+@media(max-width:780px){.pass-grid{grid-template-columns:1fr}.boss-extra-controls{grid-template-columns:1fr}.pass-stats{grid-template-columns:repeat(2,minmax(0,1fr))}.pass-stat:last-child{grid-column:1/-1}}
+
+/* v5.5 OVERDRIVE — simplified, low-click layout */
+.source-foot{margin-top:18px}.source-foot summary{color:#91a9c5;font-size:12px;font-weight:500}.source-foot .source-body{margin-top:9px;color:#a4b4ca}
+.wrap{max-width:950px;padding-top:19px}.tabs{overflow:visible;flex-wrap:wrap;align-items:center;gap:7px;padding-bottom:13px}
+.tabs>.tab{min-height:40px;padding:9px 17px;font-weight:650}.nav-more{margin-left:auto;position:relative;z-index:20}
+.nav-more>summary{list-style:none;border:1px solid var(--line);border-radius:11px;min-height:40px;padding:9px 14px;background:#19283e;color:var(--text)}
+.nav-more>summary::-webkit-details-marker{display:none}.nav-more.on>summary,.nav-more[open]>summary{border-color:#569b89;color:var(--accent)}
+.more-items{position:absolute;right:0;top:calc(100% + 7px);padding:11px;background:#172940;border:1px solid #415876;border-radius:14px;box-shadow:0 12px 35px #050c19aa;min-width:214px;display:grid;grid-template-columns:1fr;gap:6px}
+.more-items button{text-align:left;font-size:13px;padding:10px 12px}
+.focus-hero{background:radial-gradient(ellipse at top right,#29544a 0%,#20364b 53%,#172943 100%);border-color:#45716a;padding:25px 27px}
+.focus-top{display:flex;align-items:center;justify-content:space-between;gap:9px;flex-wrap:wrap}.focus-eyebrow,.focus-version{font-size:11px;letter-spacing:.07em;color:#b1d6cc}.focus-version{background:#244e48;padding:5px 10px;border-radius:99px}
+.focus-hero h2{font-size:29px;line-height:1.2;letter-spacing:-.7px;margin:16px 0 8px}.focus-hero p{margin:0;color:#d0dfeb;font-size:14px}
+.focus-profile{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-top:17px;color:#b6d7d7;font-size:13px}.focus-profile label{display:flex;align-items:center;gap:8px}.focus-profile input{width:84px;padding:7px;text-align:center;border-color:#507c78}
+.focus-tasks{display:grid;gap:10px;margin-top:14px}.focus-row{display:flex;align-items:center;gap:16px;padding:18px 20px;border:1px solid #354d6c;background:#17283f;border-radius:15px}
+.focus-row-main{flex:1;min-width:0;display:grid;gap:6px}.focus-row-title{font-size:16px;font-weight:750;letter-spacing:-.15px}.focus-check{display:flex;align-items:center;justify-content:center;gap:7px;font-size:12px;color:var(--accent);border:1px solid #3a766c;padding:8px;border-radius:10px;cursor:pointer;white-space:nowrap;min-width:88px}
+.focus-check input{width:17px;height:17px}.focus-row.is-done{opacity:.62}.event-more{font-size:12px;color:#c4d4e5}.event-more summary{font-weight:500;color:#a9c5e7;width:max-content}.event-more p{margin:7px 0;line-height:1.65}.event-more a{color:var(--blue)}
+.focus-footer{margin-top:15px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}.focus-footer p{font-size:13px;color:var(--muted);margin:0}.focus-footer strong{color:var(--text)}
+.focus-footgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:22px}.focus-small{display:flex;align-items:center;justify-content:space-between;gap:12px}.focus-small strong{font-size:14px}.focus-small p{font-size:12px;color:var(--muted);margin:6px 0 0}.focus-small button{flex:none}
+.focus-fine{font-size:11px;color:var(--muted);margin:15px 0}.focus-empty{padding:20px;border:1px solid #36655e;border-radius:14px;background:#183a39;color:#bde6d6}
+#events>.event-hero>.routine-statbar{display:none}#events .section-title{margin-top:22px}#events .focus-tasks{margin-top:10px}
+#events .card.event-hero{padding:20px}#events .event-hero .notice{line-height:1.6}#events .focus-row{padding:15px 17px}
+@media(max-width:620px){.wrap{padding:12px 11px 65px}header h1{font-size:20px}.tabs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:5px}.tabs>.tab{padding:9px 3px;font-size:12px;min-height:40px}.nav-more{grid-column:1/-1;margin-left:0}.nav-more>summary{font-size:12px;text-align:center;padding:7px;min-height:34px}.more-items{left:0;right:0;grid-template-columns:1fr 1fr}.focus-hero{padding:19px}.focus-hero h2{font-size:24px}.focus-footgrid{grid-template-columns:1fr}.focus-row{padding:13px;gap:9px}.focus-row-title{font-size:14px}.focus-check{min-width:72px;padding:7px;font-size:11px}.focus-footer{align-items:stretch}.focus-footer .btn{width:100%}.focus-small{padding:15px}.focus-hero p{font-size:13px}}
+
+/* v5.6: compact new-account roadmap */
+.starter-hero{background:linear-gradient(120deg,#213f49,#14263e);border-color:#427264;padding:22px 24px}
+.starter-header{align-items:flex-start}.starter-eyebrow{color:#91ddc3;font-size:11px;font-weight:750;letter-spacing:.1em;margin:0 0 7px}
+.starter-hero h2{font-size:24px;letter-spacing:-.5px;margin:0 0 7px}.starter-hero p.muted{max-width:590px;font-size:13px;margin:0}
+.starter-switch{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0 10px}.starter-switch .btn{font-size:13px}.starter-switch .btn.active{color:#092522;background:var(--accent);border-color:var(--accent);font-weight:800}
+.starter-note{padding:12px 14px;border-radius:10px;background:#112e3a;border:1px solid #39695f;font-size:13px;line-height:1.65}
+.starter-steps{display:grid;gap:9px}.starter-step{display:flex;align-items:flex-start;gap:12px;border-top:1px solid var(--line);padding:12px 0}.starter-step:first-child{border-top:0}.starter-number{font-size:12px;color:var(--accent);font-weight:800;padding:4px 8px;border-radius:8px;background:#123e3d}.starter-step strong{display:block;font-size:14px}.starter-step p{font-size:12px;color:var(--muted);margin:3px 0 0}
+.link-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.link-item{background:#15283e;border:1px solid #354962;border-radius:13px;padding:14px;min-width:0}.link-item .row{align-items:flex-start}.link-item h3{font-size:15px;margin:0 0 3px}.link-item p{font-size:12px;color:#b5c8dd;margin:8px 0 10px}.link-item .link-stage{font-size:11px;color:var(--accent);font-weight:650}.link-item .link-why{font-size:11px;color:var(--muted)}.link-item button{margin-top:6px;white-space:nowrap}.link-item.link-finished{border-color:#3f7565}.link-item .pill{font-size:10px}.starter-legion .starter-timeline{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.starter-timeline>div{border-left:2px solid #548e79;padding-left:12px}.starter-timeline strong{font-size:13px}.starter-timeline p{font-size:12px;color:var(--muted);margin:4px 0 0}
+@media(max-width:700px){.link-grid,.starter-legion .starter-timeline{grid-template-columns:1fr}.starter-hero{padding:17px}.starter-hero h2{font-size:21px}.starter-switch .btn{flex:1;font-size:12px;padding:9px 5px}}
+</style></head><body><div class="wrap"><header><div><h1><span class="mark">✦</span> MapleStory Coach <span class="muted" style="font-weight:400">/ 5.6</span></h1><small>Kaiser · OVERDRIVE · v255 官方 Crystal + 新号路线</small></div></header>
+<nav class="tabs" aria-label="主要功能">
+<button class="tab on" data-tab="today">今天</button>
+<button class="tab" data-tab="events">活动</button>
+<button class="tab" data-tab="starter">新账号</button>
+<button class="tab" data-tab="sync">角色同步</button>
+<details class="nav-more" id="moreMenu"><summary>更多工具 <span aria-hidden="true">▾</span></summary><div class="more-items">
+<button class="btn small" data-go="bosses">Boss 图鉴</button><button class="btn small" data-go="path">成长路线</button><button class="btn small" data-go="routine">Daily / Weekly</button>
+<button class="btn small" data-go="crystal">Crystal 计算</button><button class="btn small" data-go="skills">Skill Lab</button><button class="btn small" data-go="passes">Pass 指南</button>
+<button class="btn small" id="export">导出备份</button><button class="btn small" id="importShortcut">导入旧版备份</button></div></details>
+</nav>
+<section class="view on" id="today">
+<div class="card focus-hero"><div class="focus-top"><span class="focus-eyebrow">MAPLESTORYSEA · OVERDRIVE 2026</span><span class="focus-version">官方活动 · 11/11 更新</span></div>
+<h2>🐉 Kaiser · 今天只做 3 件事</h2><p>免费成长优先。完成了就安心玩，别把游戏变成打卡工作。</p>
+<div class="focus-profile"><label>角色等级 <input id="focusLevel" type="number" min="1" max="300" aria-label="角色等级"></label><span id="focusIdentity">新 Kaiser · Challengers World 规划</span></div></div>
+<div id="focusTasks" class="focus-tasks" aria-live="polite"></div>
+<div class="focus-footer"><p>完成一项，下一项自动补上。<strong>不用全部清空。</strong></p><button class="btn primary" type="button" data-go="events">查看所有活动</button></div>
+<div class="focus-footgrid"><div class="card focus-small"><div><strong>日常 · 省时模式</strong><p>Lv.200 后再开始做 Daily / Weekly，不急着全清。</p></div><button class="btn small" type="button" data-go="routine">查看日常</button></div>
+<div class="card focus-small"><div><strong>Pass · 先别急着买</strong><p>Hyper Mush 的免费档先领；付费档等确认 Main 再买。</p></div><button class="btn small" type="button" data-go="passes">Pass 建议</button></div></div>
+<p class="focus-fine">活动数据为 2026-11-11 官方公告快照，网页离线使用，不会自动实时同步。勾选只记录在本机。</p>
+</section>
+
+<section class="view" id="starter">
+  <div class="card starter-hero">
+    <div class="row starter-header"><div><p class="starter-eyebrow">NEW ACCOUNT · KAISER FIRST</p><h2>新账号，先玩好 Kaiser</h2><p class="muted">只告诉你下一步。Link / Legion 是长期加成，不是每天一定要做的任务。</p></div><span class="pill blue">攻略 · 非 KPI</span></div>
+    <div class="starter-switch" role="group" aria-label="选择世界"><button type="button" class="btn" data-starter-world="challengers">Challengers World</button><button type="button" class="btn" data-starter-world="aquila">Aquila / World Leap 后</button></div>
+    <div id="starterWorldNote" class="starter-note"></div>
+  </div>
+  <div class="card spaced"><div class="row"><h2>现在按顺序做</h2><span class="pill">优先 3 件</span></div><div id="starterSteps" class="starter-steps"></div></div>
+  <div class="section-title"><h2>Link Skill · 先练 5 只就够</h2><span class="hint" id="linkProgressCount">0 / 5</span></div>
+  <p class="hint" id="linkIntro">Lv.70 先解锁，Lv.120 再补强；无需马上冲 Lv.200。</p>
+  <div class="link-grid" id="linkCore"></div>
+  <details class="card spaced"><summary>更多 Link / Legion（以后再研究）</summary><div id="linkOptional" class="link-grid spaced"></div></details>
+  <div class="card spaced starter-legion"><h2>Legion · 先后顺序</h2><div class="starter-timeline"><div><strong>① Kaiser</strong><p>先把 Hyper Burning 和免费奖励拿稳，不为了 Legion 分心。</p></div><div><strong>② 第 2–4 只角色</strong><p>Challengers 有 3 只 Tera Burning，可挑 Mercedes / Evan / Demon Avenger；效果要等 World Leap 回普通世界才共享。</p></div><div><strong>③ Aquila / Leap 后</strong><p>优先 Lv.70 → 120 的 Link，再把容易练的副号升到 Lv.200 增加 Union Points。</p></div><div><strong>④ 再优化 Boss</strong><p>根据 Kaiser 实际 Critical Rate、IED 和 BA，补 Phantom、Luminous、Demon Slayer 等需要的加成。</p></div></div></div>
+  <p class="hint spaced">资料：<a href="https://www.maplesea.com/updates/view/v255_CW4_1/" target="_blank" rel="noreferrer">Challengers 世界规则</a> · <a href="https://www.maplesea.com/wiki/Skill/LinkSkill" target="_blank" rel="noreferrer">MapleSEA Link Skill 规则</a> · <a href="https://www.maplesea.com/wiki/Tips/FastLevelUp" target="_blank" rel="noreferrer">官方 EXP Link 建议</a> · <a href="https://www.maplerhouse.com/guide/basic/link-skills" target="_blank" rel="noreferrer">各职业 Link 效果</a>。</p>
+</section>
+<section class="view" id="path"><div class="grid"><div class="card"><h2>我的角色 <button class="btn small" type="button" data-go="sync">🔄 从 MapleSEA 同步</button></h2><p class="hint" id="profileSyncStatus">尚未连线 · IGN: iiBabyYato</p><div class="formgrid" style="grid-template-columns:repeat(2,minmax(0,1fr))"><label class="field">等级<input id="level" max="300" min="1" type="number"/></label><label class="field">Combat Power (M = Million)<input id="cp" min="0" placeholder="例 5 = 5M" step="0.1" type="number"/></label><label class="field">IED (%)<input id="ied" max="100" min="0" step="0.1" type="number"/></label><label class="field">Arcane Force<input id="af" min="0" type="number"/></label></div><p class="hint">CP 填 M（Million），例如 5 = 5M CP。Boss 能不能打不能单看 CP / 主属性。</p><label class="field spaced">Main 职业<select id="profileJob"></select></label><p class="hint" style="margin-top:5px">选职业后，Skill Lab 会使用对应武器系数；Boss 图鉴也会显示当前 Main。</p><label class="field">主属性 (STR / DEX / INT / LUK)<input id="stat" min="0" type="number"/><small class="hint" id="statPreview">Stat: 0</small></label></div><div class="card"><h2>下一步最该做什么</h2><div class="metric" id="nextname">五转 + Arcane Daily</div><p class="muted" id="nextdetail">填写等级后，按角色阶段给你建议。</p><button class="btn primary small" id="jumpboss">查看可挑战 Boss</button></div><div class="card"><h2>成长进度</h2><div class="row"><span class="muted">完成路线</span><strong id="roadpercent">0%</strong></div><div class="progress"><div id="roadbar" style="width:0%"></div></div><p class="hint">先按新手路线养好 Arcane Symbol 和技能，装备再分阶段投入。它不会把游戏变成 KPI。</p><button class="btn small" id="clearroute">重置路线打卡</button></div></div><div class="section-title"><h2>200 → 260 推荐路线</h2><span class="pill blue">建议顺序 · 可打卡</span></div><div class="gap" id="tasklist"></div><div class="card spaced event-spotlight"><div class="row"><div><h2 style="margin:0">🎁 现在最值得做的活动</h2><p class="hint" style="margin:4px 0 0">按截止时间 + 花费时间排序；只推荐高价值、免费项目。</p></div><button class="btn small" data-go="events">看 Events →</button></div><div class="quick-event-list" id="homeEventHighlights"></div></div></section>
+<section class="view" id="routine">
+<div class="card routine-hero">
+<div class="routine-heading">
+<div><h2 style="font-size:21px;margin:0">Daily / Weekly · 轻松养成</h2><p class="muted">默认只做高回报的事。不追全勤，也不用把游戏玩成第二份工作。</p></div>
+<span class="pill">只看重点 · 不用全清</span>
+</div>
+<div class="routine-statbar">
+<div class="routine-stat"><span class="hint">Daily 预计时间</span><div class="bigmini" id="routineDailyTime">~15m</div><span class="hint">建议 ~20 min 内收工</span></div>
+<div class="routine-stat"><span class="hint">Weekly 预计时间</span><div class="bigmini" id="routineWeeklyTime">~40m</div><span class="hint">可以分几天打完</span></div>
+</div>
+<div class="routine-note">任务随「我的角色等级」调整。勾选会自动保存，Daily 每天 00:00、Weekly 每周四 00:00（Malaysia / Singapore 时间）自动重新开始。</div>
+</div><div class="card spaced event-quick"><div class="row"><h2 style="margin:0">⚡ 活动先做（限时）</h2><button class="btn small" data-go="events">全部活动</button></div><p class="hint">默认只推荐 1–3 项，不用每天花超过 5 分钟在活动菜单。</p><div class="quick-event-list" id="routineEventHighlights"></div></div>
+<div class="routine-grid">
+<div class="card">
+<div class="routine-subtitle"><h2>☀️ 今天做这些</h2><span class="routine-checkstat" id="routineDailyCount">0 / 2</span></div>
+<div class="progress"><div id="routineDailyBar" style="width:0%"></div></div>
+<p class="mini-legend" id="routineDailyDate"></p>
+<div class="routine-list" id="routineDailyList"></div>
+<p class="hint">如果今天只想玩剧情、刷怪或下线，直接跳过也没关系。</p>
+</div>
+<div class="card">
+<div class="routine-subtitle"><h2>🌙 这周做这些</h2><span class="routine-checkstat" id="routineWeeklyCount">0 / 3</span></div>
+<div class="progress"><div id="routineWeeklyBar" style="width:0%"></div></div>
+<p class="mini-legend" id="routineWeeklyDate"></p>
+<div class="routine-list" id="routineWeeklyList"></div>
+<p class="hint">周常 Boss 只挑你能稳定打的。时间不够，优先不硬打。</p>
+</div>
+</div>
+<details class="card spaced">
+<summary>✨ 有空再做（Optional，不算每日必做）</summary>
+<div class="routine-optional-grid">
+<div><h3>Daily · Optional</h3><div id="routineDailyOptional"></div></div>
+<div><h3>Weekly · Optional</h3><div id="routineWeeklyOptional"></div></div>
+</div>
+<p class="hint">这里的任务是加分项；没有时间就先别碰。耗时按熟练度会有差异。</p>
+</details>
+</section>
+<section class="view" id="bosses"><div class="card"><h2>Boss 准备度（参考，不是通关保证）</h2><p class="hint">先看等级、Arcane Force 和 IED；Combat Power 推荐区间参考 KMS 2026 玩家整理，<strong>不是 MapleSEA 官方硬门槛</strong>。不同职业、装备、强化、操作、队伍都会改变实际难度。</p><div class="formgrid"><label class="field">查找 Boss<input id="search" placeholder="Lotus / Lucid / Vellum"/></label><label class="field">Boss 频率<select id="bossfreq"><option value="all">全部</option><option value="daily">Daily</option><option value="weekly">Weekly</option><option value="monthly">Monthly</option></select></label><label class="field">当前等级<input id="bLevel" max="300" min="1" type="number"/></label><label class="field">当前 CP（M / Million）<input id="bCp" min="0" step="0.1" type="number"/></label></div><p class="notice spaced">职业不同，打 Boss 的实际门槛也会不同；图鉴的 CP 范围是通用玩家参考，并非每职业独立测得。请在 <button class="btn small" data-go="skills">Skill / 职业</button> 填真实攻击和 BA 数据，来判断自己的职业表现。</p></div><div class="boss-extra-controls spaced"><label class="field">攻略阶段<select id="bossStage"><option value="all">全部阶段</option><option value="beginner">新手 / CRA</option><option value="mid">Lotus ~ Will</option><option value="end">Arcane / Grandis</option><option value="future">11/11 预告</option></select></label><label class="field">单人 / 队伍<select id="bossParty"><option value="1">Solo</option><option value="2">2 人均摊伤害</option><option value="3">3 人均摊伤害</option><option value="6">6 人均摊伤害</option></select></label><label class="field">估算目标时间（v255 周/月常最长 20m）<select id="bossTargetMin"><option value="15">15 min</option><option selected value="20">20 min</option></select></label></div>
+<div class="notice spaced">说明：HP / Force 数据以公开 KMS 社区表为基准，MapleSEA 请在 Boss UI 核实。3min BA 为理想化粗估，不含阶段机制和输出空窗；CP 不是职业专属门槛。标记「未核实售价」的 Boss 不会自动计入 Crystal；已确认的价格采用 MapleSEA v255 官方公告，公告遗漏或重复的项目会提示核实。v255 Boss HP 与战斗时间限制也有变化，请以游戏 UI 为准。</div>
+<div class="card spaced boss-progress" id="bossProgress"></div><div class="section-title"><h2>Boss Library · 完整难度</h2><span class="hint" id="bossCount"></span></div><div class="boss-grid" id="bosslist"></div></section>
+<section class="view" id="crystal"><div class="notice">已按 <strong>MapleSEA v255（2026-11-11）官方 Boss Crystal 价格</strong>更新。公告未列或有重复的项目会标注待核实；自定义售价可覆盖。Crystal Calculator 是规划估算，不代表已经获得的 Meso。你可以更改价格和队伍人数。Daily / Weekly / Monthly Crystal 分开计算。数字统一显示 K / M / B / T / Q（K=Thousand, M=Million, B=Billion, T=Trillion, Q=Quadrillion）。</div><div class="grid spaced"><div class="card"><h2>💎 Daily Crystal</h2><div class="big" id="dailyAmount">0</div><div class="hint">每日平均收入（Meso）</div><div class="divider"></div><span class="hint" id="dailyCount">0 种 Boss</span></div><div class="card"><h2>📅 Weekly Crystal</h2><div class="big" id="weeklyAmount">0</div><div class="hint">每周 Boss 收入（Meso）</div><div class="divider"></div><span class="hint" id="weeklyCount">每角色最多 12 个</span></div><div class="card"><h2>🌑 Monthly Crystal</h2><div class="big" id="monthlyAmount">0</div><div class="hint">每月 Boss 额外收入（Meso）</div><div class="divider"></div><span class="hint">Black Mage：每月 1 次</span></div></div><div class="card spaced"><div class="row"><h2>收入预测设置</h2><button class="btn small" id="demo">载入新手示范</button></div><div class="formgrid"><label class="field">每月刷 Daily 的天数<input id="days" max="31" min="0" type="number"/></label><label class="field">每月刷 Weekly 的周数<input id="weeks" max="5" min="0" type="number"/></label><label class="field">世界本周已售其他 Crystal<input id="worldused" max="90" min="0" type="number"/></label><label class="field">每周世界上限<input id="worldcap" max="999" min="1" type="number"/></label></div><div class="divider"></div><div class="row" style="align-items:start"><div><span class="muted">预测每月总收入</span><div class="big" id="grandAmount" style="color:var(--accent)">0</div></div><div class="right"><span class="muted">每日 + 周常 + 月常</span><p class="hint" id="formula"></p></div></div><div class="alert spaced" id="limitNote" style="display:none"></div><p class="hint">单角色计算；世界上限按每周约束预估（Daily 按 7 天换算）。月收入按你设定的刷本天数和周次数，不等于已经赚到。</p></div><div class="section-title"><h2>选择你会打的 Boss</h2><button class="btn small" id="clearpicks">清空选择</button></div><div class="chipbar" id="crystalFilters"><button class="chip on" data-filter="daily">Daily</button><button class="chip" data-filter="weekly">Weekly</button><button class="chip" data-filter="monthly">Monthly</button></div><div class="boss-grid" id="crystallist"></div><details class="card spaced"><summary>计算规则与价格说明</summary><p class="hint">选取的 Boss 按队伍人数平分 Crystal；同一 Boss 的不同难度不能同时纳入；每角色每周最多 12 个 Weekly Crystal。世界每周销售参考上限 90，超过上限的计划结晶按价值较低者优先排除。Daily 以平均每周刷本天数计算，Monthly 独立计入。部分规则可能在新版本调整。</p><p class="hint">所有数字都是计划收入，未扣升级费用、Star Force、税费或其他支出。你在游戏里通过 Collector → Check Price 可以看到实际价钱。</p><div class="row"><button class="btn small" id="resetprices">恢复 v254 参考价格</button><label class="btn small" style="cursor:pointer">导入 JSON<input accept="application/json" id="import" style="display:none" type="file"/></label></div></details></section>
+
+<section class="view" id="events">
+<div class="card event-hero"><div class="row" style="align-items:flex-start;flex-wrap:wrap"><div><h2 style="font-size:22px;margin:0">🎁 MapleSEA Events · 先做什么？</h2><p class="muted" style="margin:5px 0 0">先领免费、快截止、回报高的奖励。活动不是新的打工 KPI。</p></div><span class="pill">资料快照：11 Nov 2026</span></div>
+<div class="notice spaced"><strong>重要：</strong>已按 <strong>11/11 正式 v255 公告</strong>整理。此 HTML 可离线使用，<strong>不会自动更新活动内容</strong>；后续变动请到 <a href="https://www.maplesea.com/updates/view/v255_UND/" rel="noreferrer" target="_blank">官方公告目录</a> 核实。</div>
+<div class="routine-statbar"><div class="routine-stat"><span class="hint">还在进行</span><div class="bigmini" id="eventActiveCount">—</div></div><div class="routine-stat"><span class="hint">今日高优先项目</span><div class="bigmini" id="eventPriorityCount">—</div></div></div></div>
+<div class="section-title"><h2>现在先做这 3 项</h2><span class="hint">做完自动出现下一项</span></div><div class="focus-tasks" id="eventLiveList"></div>
+<details class="card spaced"><summary>其他进行中的活动（有空再看）</summary><div class="focus-tasks spaced" id="eventOtherList"></div></details>
+<details class="card spaced"><summary>即将推出</summary><div class="focus-tasks spaced" id="eventUpcomingList"></div></details>
+<details class="card spaced"><summary>已结束（不再催你做）</summary><div class="event-grid spaced" id="eventExpiredList"></div></details>
+<p class="foot">活动时间以 SGT / MYT（UTC+8）为准，截止日含 23:59；部分游戏内领取时间不等于任务开放时间。打勾仅记在本机，<strong>不会帮你完成游戏内活动</strong>。避免为追赶过期签到而额外付费。</p>
+</section>
+<section class="view" id="skills">
+<div class="card skill-hero"><div class="row" style="align-items:flex-start;flex-wrap:wrap"><div><h2 style="font-size:22px;margin:0">✨ Skill Lab · 职业伤害模拟</h2><p class="muted" style="margin:6px 0 0">同样 CP、不同职业，实战 Boss 能力会不同：技能倍率、攻速、召唤物、爆发和输出空窗都会影响结果。</p></div><span class="pill blue">社区公式 · 可自行校准</span></div>
+<p class="notice spaced">先选择职业，再填你游戏里的 Stat 与技能参数。<strong>不是官方职业 DPS 榜</strong>：没有可验证的每职业完整技能循环数据时，不会虚构职业强弱倍率。</p></div>
+<div class="skill-grid spaced">
+<div class="card"><h2>① 选你的 Main</h2><label class="field">MapleSEA 职业<select id="skillJob"></select></label><div class="spaced" id="skillJobInfo"></div><div class="divider"></div><div class="row"><span class="hint">只改当前职业，切换职业后独立保存</span><button class="btn small" id="skillDemo">载入示范参数</button></div><p class="hint">示范值是教学用途，不代表该职业真实伤害。Hero 的双手/单手、Zero 的 Alpha/Beta 等请手动校正武器系数。</p></div>
+<div class="card"><h2>② Boss / Damage 基础属性</h2><div class="formgrid compact-form">
+<label class="field">主属性 / 主属性总和<input data-sk="main" min="0" placeholder="例 30000" step="1" type="number"/></label>
+<label class="field">副属性<input data-sk="sub" min="0" placeholder="例 5000" step="1" type="number"/></label>
+<label class="field">ATT / M.ATT<input data-sk="att" min="0" placeholder="例 3000" step="1" type="number"/></label>
+<label class="field">武器系数<input data-sk="weapon" min="0.1" step="0.01" type="number"/></label>
+<label class="field">Damage %<input data-sk="damage" min="0" step="1" type="number"/></label>
+<label class="field">Boss Damage %<input data-sk="boss" min="0" step="1" type="number"/></label>
+<label class="field">Final Damage %<input data-sk="final" min="0" step="1" type="number"/></label>
+<label class="field">Critical Rate %<input data-sk="critRate" max="100" min="0" step="1" type="number"/></label>
+<label class="field">Critical Damage %<input data-sk="critDmg" min="0" step="1" type="number"/></label>
+<label class="field">显示 IED %<input data-sk="ied" max="100" min="0" step="0.1" type="number"/></label>
+<label class="field">技能额外 IED %<input data-sk="extraIed" max="100" min="0" step="1" type="number"/></label>
+<label class="field">Boss PDR %<input data-sk="pdr" max="400" min="0" step="10" type="number"/></label>
+<label class="field">Mastery 平均 %<input data-sk="mastery" max="100" min="0" step="1" type="number"/></label>
+<label class="field">无视属性抗性 %<input data-sk="elementIgnore" max="100" min="0" step="1" type="number"/></label>
+</div><p class="hint">大多职业使用 (4 × 主属性 + 副属性)；Xenon 的主属性填 STR + DEX + LUK 总和；Demon Avenger 的 HP 公式特殊，建议以下方实测 BA 为主。</p></div>
+</div>
+<div class="skill-grid spaced">
+<div class="card"><h2>③ 你实际在用的技能</h2><div class="formgrid compact-form">
+<label class="field wide">技能名称（自己命名）<input data-sk="skillName" placeholder="例 主力 Boss 技能"/></label>
+<label class="field">每一行技能伤害 %<input data-sk="skillPct" min="0" step="1" type="number"/></label>
+<label class="field">每次攻击 Lines<input data-sk="lines" min="0" step="1" type="number"/></label>
+<label class="field">180 秒理论施放次数<input data-sk="casts" min="0" step="1" type="number"/></label>
+<label class="field">Boss 有效命中时间 %<input data-sk="uptime" max="100" min="1" step="5" type="number"/></label>
+</div><p class="hint">多段召唤、追击、额外攻击、冷却缩减、伤害上限、特殊 Final Damage 效果，都需要自行折算。不是自动读取游戏技能。</p>
+<div class="divider"></div><div class="row"><div><span class="hint">估算单次技能伤害</span><div class="big" id="skillHit">—</div></div><div class="right"><span class="hint">180 秒该技能累计</span><div class="big" id="skillCycle">—</div></div></div><p class="hint" id="skillCalculationHint">填写属性后显示估算。</p></div>
+<div class="card"><h2>④ Boss 实战校准（推荐）</h2><p class="hint">职业间的真实差异，<strong>用你自己的 BA（Battle Analysis）实测</strong> 最有参考价值。</p><div class="formgrid compact-form">
+<label class="field wide">想挑战的 Boss<select id="skillTargetBoss"></select></label>
+<label class="field">3 分钟 BA 总伤害（T）<input data-sk="ba" min="0" placeholder="例 1.2 = 1.2T" step="0.01" type="number"/></label>
+<label class="field">Boss 总 HP（T，手动填）<input data-sk="bossHp" min="0" placeholder="从可靠攻略核对" step="0.01" type="number"/></label>
+<label class="field">计划 Boss 战最长分钟<input data-sk="maxFight" min="1" step="1" type="number"/></label>
+<label class="field">实战有效输出比例 %<input data-sk="bossUptime" max="100" min="1" step="5" type="number"/></label>
+</div><div class="spaced" id="skillBossAdvice"></div><p class="hint" id="skillRequiredBA">请输入 Boss HP 与计划战斗时间。</p><div class="divider"></div><div class="row"><div><span class="hint">依 BA 粗估击杀时间</span><div class="big" id="skillClearTime">—</div></div><span class="pill blue" id="skillBossFlag">需要 BA</span></div><p class="hint">HP 不预填，避免不同版本 Boss 血量出错；实战减伤、转场、复活、减伤阶段与 BA 假人设置会影响预测。请不要把这个结果当作保证。</p></div>
+</div>
+<div class="card spaced"><h2>伤害算法（可追溯）</h2><p class="hint">模拟每一 Line ≈ 0.01 × 武器系数 × (4×主属性 + 副属性) × ATT × (1 + Damage% + Boss Damage%) × (1 + Final Damage%) × 平均暴击倍率 × IED/防御倍率 × 属性抗性倍率 × Mastery × 技能倍率。技能独立的 IED 用乘法合并：1 − (1−显示IED)×(1−额外IED)。</p><p class="hint">这里未模拟等级差、ARC/Authentic 增伤、额外追击、命中上限等；估算单次不等于角色完整 DPS。对于 Demon Avenger 不使用一般 Stat 公式。不同职业的武器系数参考 <a href="https://maplestorywiki.net/w/Damage_Formula" rel="noreferrer" target="_blank">MapleStory Wiki Damage Formula</a>；CP 本身的算法与真正打 Boss 的伤害也不同，详见 <a href="https://maplestorywiki.net/w/Combat_Power" rel="noreferrer" target="_blank">Combat Power</a>。</p></div>
+</section>
+
+<section class="view" id="sync">
+<div class="card event-hero">
+  <div class="row" style="align-items:flex-start;flex-wrap:wrap">
+    <div><h2 style="font-size:22px;margin:0">🔄 MapleSEA 角色同步</h2><p class="muted" style="margin:5px 0 0">用 IGN + Nexon 官方 Open API 自动填资料。无需输入游戏密码。</p></div>
+    <span class="pill blue">本地工具 · 一次同步</span>
+  </div>
+  <p class="notice spaced"><strong>iiBabyYato 已预填。</strong>只有成功读取官方数据后，才会覆盖成长路线和 Skill Lab 的对应字段；不认识的职业与缺失字段不会乱填。</p>
+</div>
+<div class="sync-grid spaced">
+ <div class="card">
+  <h2>① 连接角色</h2>
+  <label class="field">MapleSEA IGN <input type="text" id="syncIgn" maxlength="24" placeholder="iiBabyYato" value="iiBabyYato" autocomplete="off"></label>
+  <label class="field spaced">NEXON Open API Key（只在这个网页的内存中使用）<input type="password" id="syncKey" placeholder="粘贴你自己的 MapleStorySEA API Key" autocomplete="off" spellcheck="false"></label>
+  <div class="sync-key-note spaced">🔐 只向 <strong>open.api.nexon.com</strong> 请求数据，不储存 Key，也不写入 JSON 备份。不要把 Key 发给别人或放在公共电脑上。</div>
+  <div class="sync-actions"><button class="btn primary" id="syncFetch" type="button">连接 Nexon，查看角色资料</button><button class="btn small" id="syncClearKey" type="button">清除 Key</button></div>
+  <p class="hint">还没有 Key？<a href="https://openapi.nexon.com/en/guide/prepare-in-advance/" target="_blank" rel="noopener noreferrer">官方申请指南</a> · <a href="https://openapi.nexon.com/game/maplestorysea/" target="_blank" rel="noopener noreferrer">MapleStorySEA 官方 API</a>。申请时选择 MapleStorySEA，Development 阶段即可。</p>
+  <div class="sync-status spaced" id="syncFeedback" role="status" aria-live="polite">尚未读取角色。需要联网，且部分浏览器在直接打开本地 HTML 时可能阻止 API 请求。</div>
+ </div>
+ <div class="card">
+  <h2>② 预览 → 写入 Coach <span class="pill blue">IED / Boss Damage 修复版</span></h2>
+  <div id="syncPreview" class="sync-profile"><p class="muted">等待读取角色资料。成功后会在这里显示确认过的等级、职业与战力。</p></div>
+  <div class="sync-actions"><button class="btn primary" id="syncApply" type="button" disabled>确认同步到 Coach</button><button class="btn small" id="syncOpenPath" type="button">回到成长路线</button></div>
+  <p class="hint">同步只会填公开角色资料；无法自动确定 Boss 实际通关能力或 BA，也不会自动勾掉你的 Daily / Weekly。</p>
+ </div>
+</div>
+<details class="card spaced"><summary>可选：通过官方 API JSON 导入（跨站连接失败时）</summary>
+<p class="hint">如果浏览器拦截 API 连接，可分别在 <a href="https://openapi.nexon.com/game/maplestorysea/" rel="noopener noreferrer" target="_blank">Nexon API 测试页面</a>取得 <code>basic</code> 与 <code>stat</code> 两份响应，合成 JSON：<code>{"basic":{...},"stat":{...}}</code>。这是备用方式，正常连接成功不需要。</p>
+<textarea class="sync-json" id="syncJson" placeholder='{"basic":{"character_name":"iiBabyYato","character_level":250,"character_class":"Kaiser"},"stat":{"final_stat":[{"stat_name":"Combat Power","stat_value":"20000000"}]}}'></textarea>
+<div class="sync-actions"><button class="btn small" id="syncImportJson" type="button">读取 JSON 并预览</button></div>
+</details>
+<div class="card spaced"><h2>常见问题</h2><p class="hint">① 官方 API 有 Key 验证，不能仅凭 IGN 无授权批量取数据。② 若使用本地 file:// 网页出现网络/CORS 错误，不代表角色不存在：建议把 HTML 放到本机 localhost 运行，或用「JSON 导入」作为替代。③ Nexon 数据可能有延迟，更新要手动按同步；此工具不会在关闭网页后后台抓取。④ 资料来源：Data based on NEXON Open API。</p></div>
+</section>
+
+<section class="view" id="passes">
+<div class="card pass-hero"><div class="row" style="align-items:flex-start;flex-wrap:wrap"><div><h2 style="font-size:22px;margin-bottom:4px">🎫 MapleSEA Pass Guide · v255 OVERDRIVE</h2><p class="muted">优先帮新账号升级，不追消费、不增加每日功课。</p></div><span class="pill gold">资料快照 · 2026-11-11</span></div>
+<div class="notice spaced">已按 <strong>11/11 v255 正式公告</strong> 更新：Hyper Mushroom 付费档各 49,800 Maple Points；Genesis Pass 30,000 Maple Cash；Momentum Premium 29,800 / Prime 39,800 Maple Cash。<strong>今天建议先免费玩</strong>，Maple Cash / Points 不是 RM。</div>
+<div class="pass-stats"><div class="pass-stat"><small>你的 Level</small><strong id="passLevel">200</strong></div><div class="pass-stat"><small>参考游戏基金</small><strong>RM300 / 月</strong></div><div class="pass-stat"><small>当前建议</small><strong id="passTop">免费先玩</strong></div></div>
+</div>
+<div class="card spaced"><div class="row" style="flex-wrap:wrap;align-items:start"><div><h2>🧮 预算比较（自己填 RM，避免错误换汇）</h2><p class="hint">Maple Cash / Maple Points 不是 RM；此页不会猜汇率。要买时把实际结账金额填在下方，系统帮你看有没有超过 RM300 游戏基金。</p></div><label class="field">本月其他游戏已花（RM）<input id="passOtherSpend" type="number" min="0" step="1" placeholder="0"/></label></div><div class="pass-stats"><div class="pass-stat"><small>Pass 预估花费</small><strong id="passSpend">RM0</strong></div><div class="pass-stat"><small>剩余预算</small><strong id="passRemaining">RM300</strong></div><div class="pass-stat"><small>购买状态</small><strong id="passBudgetStatus">未计划消费</strong></div></div></div>
+<div class="section-title"><h2>购买优先级（会按等级提醒）</h2><span class="hint">点击「考虑购买」再输入实际 RM 价钱</span></div>
+<div class="pass-grid" id="passCards"></div>
+<details class="card spaced"><summary>先了解：Pass 和免费活动有什么区别？</summary><p class="hint">游戏里的 Free Tier/签到通常已经包含不少升级奖励；付费 Pass 可能另外增加奖励或 BUFF，是否划算取决于你能否达成任务及有效期。Genesis Pass 只针对解放 Genesis Weapon 的角色；Sol Erda Booster Max 则要 Lv.260 且六转后才可能用到。不要只因为限时就买。</p><p class="hint">你目前是打算 11/11 创建新账号；比较合理的决定点是玩 1–2 周后，看你愿不愿意长期玩这个 Main，再决定 Pass。月预算 RM300 是全部游戏的总额，不是 MapleSEA 专属额度。</p></details>
+<div class="card spaced"><h2>官方核对入口</h2><p class="hint"><a href="https://www.maplesea.com/updates/view/v255_UND/" target="_blank" rel="noreferrer">v255 正式目录</a> · <a href="https://www.maplesea.com/updates/" target="_blank" rel="noreferrer">正式 Patch Notes</a> · <a href="https://www.maplesea.com/announcements/view/v255_SEBM/" target="_blank" rel="noreferrer">Sol Erda Booster Max 公告</a> · <a href="https://www.maplesea.com/updates/view/v251_Growth/" target="_blank" rel="noreferrer">旧 Hyper Mush 规则（仅作参考）</a> · <a href="https://www.maplesea.com/updates/view/v251_Passes/" target="_blank" rel="noreferrer">旧 Genesis Pass 规则（仅作参考）</a>。</p></div>
+</section>
+<details class="foot source-foot"><summary>资料来源与版本说明</summary><div class="source-body">攻略与价格来源（不同服务器仅作参考）：<a href="https://www.maplesea.com/updates/view/v237_Patch_Notes/" rel="noreferrer" target="_blank">MapleSEA v237 Crystal 规则</a> · <a href="https://www.maplesea.com/updates/view/v209_patch_notes/" rel="noreferrer" target="_blank">MapleSEA 价格调整</a> · <a href="https://maplestorywiki.net/w/Intense_Power_Crystal" rel="noreferrer" target="_blank">Wiki MSEA v254 价格</a> · <a href="https://pigeon9.tistory.com/198" rel="noreferrer" target="_blank">2026 KMS 玩家战力建议</a> · <a href="https://maplestorywiki.net/w/Bosses" rel="noreferrer" target="_blank">Boss 等级/入场</a> · <a href="https://www.maplesea.com/updates/view/v246_Patch1/" rel="noreferrer" target="_blank">MSEA 周四 Reset</a> · <a href="https://www.maplesea.com/updates/view/v251_Content/" rel="noreferrer" target="_blank">Monster Park 免费次数</a>。<br/>v5.6 · <a href="https://www.maplerhouse.com/guide/boss/boss-overview" target="_blank" rel="noreferrer">Boss HP / Force 参考（v255 血量已调整）</a> · <a href="https://www.maplesea.com/updates/view/v254_Malicia/" target="_blank" rel="noreferrer">Malicia 官方</a> · <a href="https://www.maplesea.com/updates/view/v252_Jupiter/" target="_blank" rel="noreferrer">Jupiter 官方</a> · <a href="https://www.maplesea.com/news/view/MOT_SG_OVERDRIVE/" target="_blank" rel="noreferrer">v255 预告</a> · <a href="https://www.maplesea.com/updates/view/v255_Content_01/" target="_blank" rel="noreferrer">v255 Crystal 官方表</a> · <a href="https://www.maplesea.com/updates/view/v255_CW4_1/" target="_blank" rel="noreferrer">Challengers World 限制</a> · <a href="https://www.maplesea.com/wiki/Tips/FastLevelUp" target="_blank" rel="noreferrer">官方 Link 培养建议</a> · 离线单文件版 · 内容供规划参考，并非 MapleSEA 官方应用 · 本地保存浏览器数据。<span> · <a href="https://www.maplesea.com/updates/view/v254_Events/" rel="noreferrer" target="_blank">v254 Countdown</a> · <a href="https://www.maplesea.com/updates/view/v254_AoW/" rel="noreferrer" target="_blank">Archipelago</a> · <a href="https://www.maplesea.com/updates/view/v254_LMG/" rel="noreferrer" target="_blank">Lucid Garden</a> · <a href="https://maplesea.com/21anni/lethe-pre-reg/" rel="noreferrer" target="_blank">Lethe</a> · <a href="https://maplestorywiki.net/w/Damage_Formula" rel="noreferrer" target="_blank">Damage Formula</a></span></div></details></div>
+<script>
+'use strict';
+const B=[
+// [id, boss, difficulty, freq, price, entry level, approximate solo CP lower, upper, suggested IED, AF, note]
+['nzak','Zakum','Normal','daily',348647,90,0,0,0,0,'适合从每日收入起步。'],
+['epap','Papulatus','Easy','daily',389628,115,0,0,0,0,'基础每日 Boss。'],
+['emag','Magnus','Easy','daily',410975,115,0,0,0,0,'基础每日 Boss。'],
+['nhilla','Hilla','Normal','daily',455376,85,0,0,0,0,'练习走位与熟悉 Boss UI。'],
+['eht','Horntail','Easy','daily',512620,130,0,0,0,0,'日常入门。'],
+['nht','Horntail','Normal','daily',588466,130,0,0,0,0,'与 Easy Horntail 选择其中一种。'],
+['cht','Horntail','Chaos','daily',785783,135,0,0,0,0,'较高价值日常结晶。'],
+['npb','Pink Bean','Normal','daily',816298,140,0,0,0,0,'需完成前置剧情。'],
+['hvl','Von Leon','Hard','daily',1423944,125,0,0,0,0,'需前置任务。'],
+['nark','Arkarium','Normal','daily',1464920,140,0,0,0,0,'需前置任务；注意秒杀机制。'],
+['nmag','Magnus','Normal','daily',1506474,155,0,0,0,0,'与 Easy Magnus 二选一。'],
+['hmori','Mori Ranmaru','Hard','daily',1544348,180,0,0,0,0,'地域 Boss；注意战斗机制。'],
+['npap','Papulatus','Normal','daily',1596506,155,0,0,0,0,'与 Easy Papulatus 二选一。'],
+['ecyg','Cygnus','Easy','weekly',4550000,165,.3,1.5,75,0,'可作为 Weekly Boss 入门。'],
+['hhilla','Hilla','Hard','weekly',5750000,170,.3,1.5,75,0,'Boss 基础周常。'],
+['cpb','Pink Bean','Chaos','weekly',6580000,170,.5,1.5,75,0,'可练习周常机制。'],
+['ncyg','Cygnus','Normal','weekly',7500000,165,.5,2,75,0,'Weekly Boss 初阶收入。'],
+['czak','Zakum','Chaos','weekly',8080000,90,.9,2,80,0,'2026 KMS 玩家 CP 建议约 0.9–2M，非 SEA 硬门槛。'],
+['cqueen','Crimson Queen','Chaos','weekly',8140000,180,3,5,80,0,'CRA 三件套挑战之一；先学机制。'],
+['cvon','Von Bon','Chaos','weekly',8150000,180,3,5,80,0,'CRA；把握时间机制。'],
+['cpierre','Pierre','Chaos','weekly',8170000,180,3,5,80,0,'CRA；注意分裂机制。'],
+['hmag','Magnus','Hard','weekly',8560000,175,3,5,80,0,'高频掉落物威胁，学落点。'],
+['cvell','Vellum','Chaos','weekly',9280000,180,5,8,85,0,'CRA 四王；练习蛇头攻击，观察 IED。'],
+['npno','Princess Nou','Normal','weekly',16700000,180,5,8,85,0,'前置任务、机制有地域版本差异。'],
+['cpap','Papulatus','Chaos','weekly',16830000,190,5,8,85,0,'机制较复杂，先练习模式。'],
+['nlotus','Lotus','Normal','weekly',21870000,190,5,10,90,0,'需 Black Heaven 前置；V Matrix 与 IED 很重要。'],
+['ndamien','Damien','Normal','weekly',22860000,190,5,10,90,0,'需 Heroes of Maple 前置；善用净化机制。'],
+['nslime','Guardian Angel Slime','Normal','weekly',29600000,210,8,12,90,0,'利用机关与爆发窗口。'],
+['elucid','Lucid','Easy','weekly',35600000,220,10,20,90,360,'完成 Lachelein 主线；Arcane Force 至少 360。'],
+['ewill','Will','Easy','weekly',38700000,235,10,20,90,560,'完成 Esfera 前置，学不同阶段机制。'],
+['nlucid','Lucid','Normal','weekly',43200000,220,20,25,93,360,'更高爆发要求；建议先稳定 Easy。'],
+['nwill','Will','Normal','weekly',50400000,235,20,25,93,760,'高 Arcane Force + 机制；版本需求请按 Boss UI 核对。'],
+['hlotus','Lotus','Hard','weekly',71000000,190,15,20,94,0,'进阶 Boss；此 CP 范围仅作参考。'],
+['hdamien','Damien','Hard','weekly',67500000,190,15,20,94,0,'进阶 Boss；掌握机制胜于单看主属性。'],
+['bm','Black Mage','Hard','monthly',992000000,255,0,0,96,1320,'月常 Boss；等级 255+、Arcane Force 要求高。'],
+['xbm','Black Mage','Extreme','monthly',9080000000,255,0,0,97,1320,'顶级月常内容，非新手路线。']
+].map(x=>({id:x[0],name:x[1],mode:x[2],freq:x[3],price:x[4],level:x[5],cpLow:x[6],cpHigh:x[7],ied:x[8],af:x[9],note:x[10]}));
+const tasks=[['Lv.200 完成五转 + Road to Extinction 主线','解锁 Arcane River，先拿第一个 Arcane Symbol。'],['建立 Arcane Symbol Daily','每天做当前解锁地区的 Daily，逐步提高 ARC。'],['安排 V Matrix 主技能强化','优先能提升清怪和 Boss 输出的核心；依职业配点。'],['完成 CRA 前置并练习周常','优先打能稳定清除的 Boss，累积基础 Meso。'],['查 WSE：Emblem → Secondary → 长期武器','先确认装备会长期使用，再投入 Potential / Legendary。'],['Lv.210 Chew Chew、Lv.220 Lachelein','推进对应主线并解锁更多 Arcane Symbol。'],['Lv.225–235 解锁 Arcana、Morass、Esfera','补齐区域主线、Daily 和适合自己的周常 Boss。'],['Lv.260 六转 + HEXA','继续追踪 Authentic Symbol、HEXA 与更高级 Boss。']];
+const defaults={profile:{level:10,job:'kaiser',cp:0,ied:0,af:0,stat:0},route:[],selected:{},party:{},prices:{},days:30,weeks:4,worldused:0,worldcap:90,routine:{dailyDate:"",weeklyKey:"",daily:[],weekly:[]}};
+function load(){try{let x=JSON.parse(localStorage.getItem('maplecoach-boss-v5')||'null');return x?{...structuredClone(defaults),...x,profile:{...defaults.profile,...x.profile}}:structuredClone(defaults)}catch{return structuredClone(defaults)}}
+let s=load(), filter='daily';const $=id=>document.getElementById(id);const price=b=>Math.max(0,Math.round(Number(s.prices[b.id]??b.price)||0));const format=n=>Math.round(Number(n)||0).toLocaleString('en-US');const compact=n=>{n=Number(n)||0;const a=Math.abs(n);for(const [size,unit] of [[1e15,'Q'],[1e12,'T'],[1e9,'B'],[1e6,'M'],[1e3,'K']]){if(a>=size){const v=n/size;return Number(v.toFixed(Math.abs(v)<10?2:Math.abs(v)<100?1:0)).toLocaleString('en-US')+unit}}return format(n)};
+const esc=t=>String(t).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function save(){localStorage.setItem('maplecoach-boss-v5',JSON.stringify(s))}function jump(tab){document.querySelectorAll('.tab').forEach(el=>el.classList.toggle('on',el.dataset.tab===tab));document.querySelectorAll('.view').forEach(el=>el.classList.toggle('on',el.id===tab));const menu=$('moreMenu');if(menu){menu.open=false;menu.classList.toggle('on',!['today','events','bosses','sync'].includes(tab))}window.scrollTo({top:0,behavior:'instant'})}document.querySelectorAll('.tab').forEach(b=>b.onclick=()=>jump(b.dataset.tab));$('jumpboss').onclick=()=>jump('bosses');
+
+// v5.1: lightweight schedule. Minutes are estimates, not timers or obligations.
+const routineTasks=[
+ {id:'arcane',kind:'daily',title:'Arcane Symbol Daily',min:200,max:259,minutes:8,core:true,desc:'优先做还没满的 Symbol 区域；没空就只做最需要的 1–2 区。'},
+ {id:'authentic',kind:'daily',title:'Authentic Symbol Daily',min:260,minutes:10,core:true,desc:'Grandis 区域日常；把精力集中在当前最需要的 Symbol。'},
+ {id:'monsterpark',kind:'daily',title:'Monster Park（按免费次数）',min:200,minutes:7,core:true,desc:'v255 增加 Sweep 功能，一次通关可结算指定次数；使用已有免费票优先。'},
+ {id:'event',kind:'daily',title:'活动签到 / 顺手领奖',min:200,minutes:2,core:false,desc:'有活动才做；没有就跳过，不追所有活动任务。'},
+ {id:'dailyboss',kind:'daily',title:'精选 Daily Boss',min:200,minutes:6,core:false,desc:'只打 2–3 只你能秒杀且值得打的 Boss，不必清光。'},
+ {id:'solerda',kind:'daily',title:'HEXA / Sol Erda 练功',min:260,minutes:15,core:false,desc:'有心情才刷；不为了补满每日任务牺牲游戏乐趣。'},
+ {id:'oldarcane',kind:'daily',title:'补 Arcane Symbol（未满才做）',min:260,minutes:7,core:false,desc:'到 Grandis 后若 Arcane Symbol 已满，可完全跳过。'},
+ {id:'weeklyboss',kind:'weekly',title:'Weekly Boss（只打稳过的）',min:200,minutes:25,core:true,desc:'按 Boss 计划挑高价值、稳定通关的，长时间卡关就下次再打。'},
+ {id:'weeklyarcane',kind:'weekly',title:'Arcane River Weekly（优先需要的）',min:200,max:259,minutes:10,core:true,desc:'v255 Arcane Weekly 每区改为 1 次可领 240 Symbols；只刷有需要的地区。'},
+ {id:'mpe',kind:'weekly',title:'Extreme Monster Parker（Lv.260+）',min:260,minutes:12,core:false,desc:'v255 新周任务：累计完成 5 次 Monster Park；有顺路刷才拿奖励。不要专门找旧 MPE 副本。'},
+ {id:'sellcrystal',kind:'weekly',title:'出售 Boss Crystal',min:200,minutes:3,core:true,desc:'打完再卖，确认本周 NPC 上限；不用每天跑去卖。'},
+ {id:'epic',kind:'weekly',title:'Epic Dungeon（Lv.260+）',min:260,minutes:35,core:false,desc:'有连续空档再挑战，不纳入精简 45 分钟。'},
+ {id:'erdaweekly',kind:'weekly',title:"Erda's Request（Lv.260+）",min:260,minutes:12,core:false,desc:'需要 Sol Erda 时再安排；和练功、活动一起做更省时间。'},
+ {id:'havendwt',kind:'weekly',title:'Haven / Dark World Tree Weekly',min:200,max:259,minutes:15,core:false,desc:'只有需要 AbsoLab 材料时才做，别把它当固定作业。'},
+ {id:'weeklyevent',kind:'weekly',title:'周活动 / 商店兑换',min:200,minutes:5,core:false,desc:'只领你真正需要的奖励，活动规则以当期公告为准。'}
+];
+function sgToday(){const p=Object.fromEntries(new Intl.DateTimeFormat('en-US',{timeZone:'Asia/Singapore',year:'numeric',month:'2-digit',day:'2-digit'}).formatToParts(new Date()).filter(x=>x.type!=='literal').map(x=>[x.type,x.value]));return `${p.year}-${p.month}-${p.day}`}
+function sgWeek(){const today=sgToday(),[y,m,d]=today.split('-').map(Number);const dt=new Date(Date.UTC(y,m-1,d));const delta=(dt.getUTCDay()+3)%7;dt.setUTCDate(dt.getUTCDate()-delta);return dt.toISOString().slice(0,10)}
+function refreshRoutineKeys(){let changed=false;if(!s.routine||typeof s.routine!=='object'){s.routine={dailyDate:'',weeklyKey:'',daily:[],weekly:[]};changed=true}if(s.routine.dailyDate!==sgToday()){s.routine.dailyDate=sgToday();s.routine.daily=[];changed=true}if(s.routine.weeklyKey!==sgWeek()){s.routine.weeklyKey=sgWeek();s.routine.weekly=[];changed=true}for(const k of ['daily','weekly'])if(!Array.isArray(s.routine[k])){s.routine[k]=[];changed=true}if(changed)save()}
+function routineTile(t){const checked=s.routine[t.kind].includes(t.id);return `<label class="routine-item ${checked?'done':''}"><input type="checkbox" data-routine="${t.id}" data-kind="${t.kind}" ${checked?'checked':''}><span><strong>${esc(t.title)}</strong><small class="muted">${esc(t.desc)}</small></span><span class="minute">~${t.minutes}m</span></label>`}
+function renderRoutine(){refreshRoutineKeys();const lev=Math.max(1,Number(s.profile.level)||200),eligible=routineTasks.filter(t=>lev>=(t.min||1)&&lev<=(t.max||300));for(const kind of ['daily','weekly']){const core=eligible.filter(t=>t.kind===kind&&t.core),optional=eligible.filter(t=>t.kind===kind&&!t.core),total=core.reduce((sum,t)=>sum+t.minutes,0),done=core.filter(t=>s.routine[kind].includes(t.id)).length;$(kind==='daily'?'routineDailyList':'routineWeeklyList').innerHTML=core.map(routineTile).join('')||'<p class="routine-empty">到 Lv.200 后开始安排；现在先专心玩主线就好。</p>';$(kind==='daily'?'routineDailyOptional':'routineWeeklyOptional').innerHTML=optional.map(routineTile).join('')||'<p class="routine-empty">没有额外项目。</p>';$(kind==='daily'?'routineDailyCount':'routineWeeklyCount').textContent=`${done} / ${core.length}`;$(kind==='daily'?'routineDailyTime':'routineWeeklyTime').textContent=`~${total}m`;$(kind==='daily'?'routineDailyBar':'routineWeeklyBar').style.width=(core.length?100*done/core.length:0)+'%'}$('routineDailyDate').textContent='今天 · '+s.routine.dailyDate+' (SGT/MYT)';$('routineWeeklyDate').textContent='本周四起 · '+s.routine.weeklyKey+' (SGT/MYT)';document.querySelectorAll('[data-routine]').forEach(el=>el.onchange=()=>{const kind=el.dataset.kind,id=el.dataset.routine;s.routine[kind]=el.checked?[...new Set([...s.routine[kind],id])]:s.routine[kind].filter(x=>x!==id);save();renderRoutine()})}
+window.addEventListener('focus',renderRoutine);
+setInterval(()=>{if(s.routine&& (s.routine.dailyDate!==sgToday()||s.routine.weeklyKey!==sgWeek()))renderRoutine()},60000);
+
+function renderTasks(){const d=$('tasklist');d.innerHTML=tasks.map((t,i)=>`<label class="task ${s.route.includes(i)?'done':''}"><input type="checkbox" data-task="${i}" ${s.route.includes(i)?'checked':''}><span><strong>${t[0]}</strong><br><small class="muted">${t[1]}</small></span></label>`).join('');d.querySelectorAll('[data-task]').forEach(el=>el.onchange=()=>{let n=Number(el.dataset.task);s.route=el.checked?[...new Set([...s.route,n])]:s.route.filter(x=>x!==n);save();renderTasks()});$('roadpercent').textContent=Math.round(100*s.route.length/tasks.length)+'%';$('roadbar').style.width=100*s.route.length/tasks.length+'%'}
+function renderAdvice(){let p=s.profile;let label='',desc='';if(p.level<200){label='先升到 Lv.200';desc='先完成 200 以前的成长任务，解锁五转。'}else if(p.level<210){label='Arcane Symbol + V Matrix';desc='完成 Road to Extinction 主线，马上开始 Symbol Daily；用活动奖励推进五转技能。'}else if(p.level<220){label='Chew Chew + 初阶周常';desc='先做 Chew Chew 主线和两地区 Daily；准备 CRA，别急着把过渡装备冲 Legendary。'}else if(p.level<235){label='Lachelein + WSE';desc='优先解锁第三个 Symbol；检查 Emblem / Secondary，练习 CRA 与更高阶 Boss。'}else if(p.level<260){label='补齐 Arcane + 练 Lotus';desc='逐步解锁 Esfera、养 Symbols，提升 IED / V Matrix，尝试 Lotus / Damien。'}else{label='六转 HEXA + Boss 进阶';desc='持续做 Authentic Symbol 与 HEXA，选择适合你 CP 的周常 Boss。'}if(p.cp>=5&&p.level>=190)desc+=' 你的 CP 已达到部分玩家建议的 CRA / Lotus 试打区间，但不代表一定能过。';$('nextname').textContent=label;$('nextdetail').textContent=desc}
+function renderStatPreview(){const el=$('statPreview');if(el)el.textContent='Stat: '+compact(s.profile.stat||0)+'（'+format(s.profile.stat||0)+'）'}
+function inputBind(id,fn){$(id).addEventListener('input',()=>{fn($(id).value);save();renderAdvice();renderBosses();renderRoutine();renderStatPreview();renderEvents()})}for(const k of ['level','cp','ied','af','stat']){$(k).value=s.profile[k];inputBind(k,v=>{s.profile[k]=Math.max(0,Number(v)||0);if(k==='level')$('bLevel').value=s.profile.level;if(k==='cp')$('bCp').value=s.profile.cp})}$('bLevel').value=s.profile.level;$('bCp').value=s.profile.cp;for(let [id,key] of [['bLevel','level'],['bCp','cp']])inputBind(id,v=>{s.profile[key]=Math.max(0,Number(v)||0);$(key).value=s.profile[key]});$('clearroute').onclick=()=>{if(confirm('确定清空成长路线的打卡？')){s.route=[];save();renderTasks()}};
+function status(b){const p=s.profile;if(p.level<b.level)return ['未达等级','gold'];if(b.af&&p.af<b.af)return ['ARC 不足','gold'];if(b.ied&&p.ied&&p.ied<b.ied)return ['建议补 IED','gold'];if(b.cpLow&&p.cp&&p.cp<b.cpLow)return ['可先强化','blue'];if(b.cpLow&&p.cp>=b.cpLow)return ['建议先试打',''];return ['检查前置','blue']}
+function renderBosses(){let q=$('search').value.toLowerCase(),f=$('bossfreq').value;let xs=B.filter(b=>(f==='all'||b.freq===f)&&`${b.name} ${b.mode}`.toLowerCase().includes(q));$('bossCount').textContent=`${xs.length} 个参考条目`;$('bosslist').innerHTML=xs.map(b=>{const st=status(b);return `<div class="boss"><div class="labelrow"><span class="boss-name">${esc(b.name)} · ${b.mode}</span><span class="pill ${st[1]}">${st[0]}</span></div><div class="meta">${b.freq.toUpperCase()} ｜ 入场 Lv.${b.level}+ ｜ ${b.af?'ARC '+b.af:'无 ARC 门槛资料'}</div><p>建议 IED：${b.ied?b.ied+'% 左右（非门槛）':'—'} ｜ 单人参考 CP：${b.cpLow?b.cpLow+'M–'+b.cpHigh+'M':'—'} ｜ 主属性：因职业而异</p><p>${esc(b.note)}</p><div class="row"><span class="hint">Solo Crystal · ${compact(price(b))} Meso</span><button class="btn small" data-add="${b.id}">${s.selected[b.id]?'移出计划':'加入 Crystal 计划'}</button></div></div>`}).join('');$('bosslist').querySelectorAll('[data-add]').forEach(bt=>bt.onclick=()=>{toggle(bt.dataset.add);renderBosses()})}
+$('search').oninput=renderBosses;$('bossfreq').onchange=renderBosses;
+function toggle(id){let b=B.find(x=>x.id===id);if(!b)return;if(s.selected[id])delete s.selected[id];else{for(let other of B){if(other.name===b.name&&other.id!==b.id)delete s.selected[other.id]}s.selected[id]=true}save();renderCrystal()}
+function renderCrystal(){document.querySelectorAll('.chip').forEach(b=>b.classList.toggle('on',b.dataset.filter===filter));const xs=B.filter(b=>b.freq===filter);$('crystallist').innerHTML=xs.map(b=>`<div class="boss"><div class="row"><label style="display:flex;align-items:center;gap:9px;cursor:pointer"><input type="checkbox" data-pick="${b.id}" ${s.selected[b.id]?'checked':''}><span><strong>${esc(b.name)}</strong> <span class="muted">${b.mode}</span></span></label><span class="pill ${filter==='monthly'?'gold':'blue'}">${filter.toUpperCase()}</span></div><div class="selectrow"><label>人数<select data-party="${b.id}">${[1,2,3,4,5,6].map(n=>`<option value="${n}" ${(s.party[b.id]||1)===n?'selected':''}>${n}人</option>`).join('')}</select></label><label>Solo 售价（原始 Meso）<input aria-label="Solo 售价 Meso" type="number" min="0" step="1" data-price="${b.id}" value="${price(b)}"></label></div><div class="meta">Solo：${compact(price(b))} Meso ｜ 我可获得：${compact(Math.floor(price(b)/(s.party[b.id]||1)))} Meso / 次</div></div>`).join('');$('crystallist').querySelectorAll('[data-pick]').forEach(x=>x.onchange=()=>{toggle(x.dataset.pick)});$('crystallist').querySelectorAll('[data-party]').forEach(x=>x.onchange=()=>{s.party[x.dataset.party]=+x.value;save();renderCrystal()});$('crystallist').querySelectorAll('[data-price]').forEach(x=>x.onchange=()=>{s.prices[x.dataset.price]=Math.max(0,+x.value||0);save();renderCrystal();renderBosses()});calculate()}
+const cap90=()=>Math.min(999,Math.max(1,+s.worldcap||90));function calculate(){const chosen=B.filter(b=>s.selected[b.id]);let daily=chosen.filter(b=>b.freq==='daily').map(b=>({id:b.id,p:Math.floor(price(b)/(s.party[b.id]||1)),b}));let weekly=chosen.filter(b=>b.freq==='weekly').map(b=>({id:b.id,p:Math.floor(price(b)/(s.party[b.id]||1)),b})).sort((a,b)=>b.p-a.p);let monthly=chosen.filter(b=>b.freq==='monthly').map(b=>({id:b.id,p:Math.floor(price(b)/(s.party[b.id]||1)),b}));let weeklyTop=weekly.slice(0,12);let over12=weekly.length>12;let dailyTotal=daily.reduce((sum,x)=>sum+x.p,0);let weeklyTotal=weeklyTop.reduce((sum,x)=>sum+x.p,0);let monthlyTotal=monthly.reduce((sum,x)=>sum+x.p,0);let dd=Math.min(31,Math.max(0,+s.days||0)),ww=Math.min(5,Math.max(0,+s.weeks||0));let worldLeft=Math.max(0,cap90()-Math.max(0,+s.worldused||0));let weeklyAvail=weeklyTop.map(o=>({p:o.p,f:'weekly'}));const dailyPerWeek=dd/(Math.max(1,ww));if(ww){daily.forEach(o=>{let q=dailyPerWeek;while(q>0){let w=Math.min(1,q);weeklyAvail.push({p:o.p,w,f:'daily'});q-=w}})}weeklyAvail=weeklyAvail.map(o=>({...o,w:o.w??1})).sort((a,b)=>b.p-a.p);let slots=worldLeft;let weekLimitMoney=0;for(const el of weeklyAvail){let n=Math.max(0,Math.min(slots,el.w));weekLimitMoney+=n*el.p;slots-=n}let raw=dailyTotal*dd+weeklyTotal*ww;let capped=ww>0?weekLimitMoney*ww:dailyTotal*dd;let final=Math.min(raw,capped)+monthlyTotal;let countEst=weeklyTop.length+daily.length*dd/(ww||4);$('dailyAmount').textContent=compact(dailyTotal);$('weeklyAmount').textContent=compact(weeklyTotal);$('monthlyAmount').textContent=compact(monthlyTotal);$('dailyCount').textContent=daily.length+' 种 Daily Boss';$('weeklyCount').textContent=weeklyTop.length+' / 12 Weekly Crystal'+(over12?'（已按价值取前 12）':'');$('grandAmount').textContent=compact(final)+' Meso';$('formula').textContent=`${compact(dailyTotal)} × ${dd} 天 + ${compact(weeklyTotal)} × ${ww} 周 + ${compact(monthlyTotal)} 月常`;
+const notes=[];if(over12)notes.push('你选择了超过 12 种 Weekly Boss，计算时只取每人收益最高的 12 个。');if(raw>capped+1&&ww)notes.push(`世界的 Crystal 余量是 ${worldLeft} 个/周，部分较低价值的预估结晶未计入。`);if(s.worldused)notes.push('其他角色已售水晶会占用世界 90 个/周的上限。');$('limitNote').style.display=notes.length?'block':'none';$('limitNote').textContent=notes.join(' ')}
+for(const k of ['days','weeks','worldused','worldcap']){$(k).value=s[k];$(k).oninput=()=>{s[k]=Math.max(0,Number($(k).value)||0);save();calculate()}}document.querySelectorAll('[data-filter]').forEach(b=>b.onclick=()=>{filter=b.dataset.filter;renderCrystal()});$('demo').onclick=()=>{for(const id of ['nzak','emag','nhilla','eht','npb','nark','ecyg','hhilla','cpb','czak'])s.selected[id]=true;save();renderCrystal();renderBosses()};$('clearpicks').onclick=()=>{if(confirm('清空所有已选择的 Boss？')){s.selected={};save();renderCrystal();renderBosses()}};$('resetprices').onclick=()=>{if(confirm('确认恢复所有 Boss 的 v255 官方价格？')){s.prices={};save();renderCrystal();renderBosses()}};$('export').onclick=()=>{const data=new Blob([JSON.stringify({schema:'maplecoach-boss-v5',state:s},null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(data);a.download='maplestory-coach-backup.json';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),2000)};$('import').onchange=async e=>{try{let obj=JSON.parse(await e.target.files[0].text());if(obj.schema!=='maplecoach-boss-v5'||!obj.state)throw Error('格式不符合');s={...structuredClone(defaults),...obj.state};save();location.reload()}catch(err){alert('导入失败：'+err.message)}};
+renderTasks();renderAdvice();renderBosses();renderCrystal();renderRoutine();renderStatPreview();
+
+
+/* v5.5 OFFICIAL OVERDRIVE event snapshot: MapleStorySEA v255, 11 Nov 2026. */
+const EVENT_SNAPSHOT='2026-11-11';
+const eventsV52=[
+ {id:'kaiser-hyper',name:'给 Kaiser 开 Hyper Burning BEYOND',start:'2026-11-11',end:'2027-03-09',priority:140,minutes:3,kind:'once',min:1,detail:'在 Challengers World 创建 Kaiser，指定 Hyper Burning（只给确定要练的角色），然后用 Hyper Blink 练级。',why:'新 Main 核心成长',url:'https://www.maplesea.com/updates/view/v255_HBHBB/'},
+ {id:'mercenary-support',name:'加入 New Mercenary Support',start:'2026-11-11',end:'2027-03-09',priority:132,minutes:2,kind:'once',min:1,detail:'新建角色从 Event List 参加，完成任务后点 Complete 领奖。Kaiser 可做所有职业共享的任务。',why:'新角色的免费装备与经验奖励',url:'https://www.maplesea.com/updates/view/v255_ETC/'},
+ {id:'terry-gift',name:'NPC Terry Showcase 免费礼物',start:'2026-11-11',end:'2026-11-24',priority:128,minutes:2,kind:'once',min:1,detail:'Showcase Gift 可在截止前找 NPC Terry 领取，具体资格以活动页面为准。',why:'截止 11/24 · 先领免费的',url:'https://www.maplesea.com/overdrive'},
+ {id:'hyper-mush-free',name:'开启 Hyper Mushroom Pass 免费档',start:'2026-11-11',end:'2027-03-09',priority:125,minutes:2,kind:'once',min:1,detail:'只适用 v255 后在 Challengers World 新创建的角色；参与角色只能指定一次，先领免费奖励，别急着买 Premium/Hyper。',why:'免费成长资源',url:'https://www.maplesea.com/updates/view/v255_HMP/'},
+ {id:'mission-join',name:'Lv.101：参加 Mission Ultima',start:'2026-11-11',end:'2027-01-26',priority:118,minutes:2,kind:'once',min:101,detail:'在活动列表点 Participate，一次开启相关活动；参与记录共享 Maple ID。',why:'先开启签到及成长福利',url:'https://www.maplesea.com/updates/view/v255_MUE_1/'},
+ {id:'ultima-login',name:'Operation Ultima 登录签到',start:'2026-11-11',end:'2027-01-26',priority:112,minutes:1,kind:'daily',min:101,detail:'参加 Mission Ultima 后登录自动累计 Supply Log，最多每周 5 次；不用额外刷怪签到。',why:'每天 1 分钟 · 最多每周 5 次',url:'https://www.maplesea.com/updates/view/v255_MUE_1/'},
+ {id:'cw-missions',name:'Challengers World Rank 任务',start:'2026-11-11',end:'2027-03-09',priority:75,minutes:5,kind:'info',min:1,optional:true,detail:'想拿 Challenger Title 需要 90,000 Points + 单人击败 Hard Maerin；这是长期目标，不是今天必须完成。',why:'长期挑战 · 先升级',url:'https://www.maplesea.com/updates/view/v255_CW4_1/'},
+ {id:'ultima-hunt',name:'Mission Ultima 刷怪与成长任务',start:'2026-11-11',end:'2027-01-26',priority:58,minutes:5,kind:'weekly',min:101,optional:true,detail:'在平常升级时顺路完成 Hunting/Growth 任务，别专门增加每日刷怪时间。',why:'顺路完成即可',url:'https://www.maplesea.com/updates/view/v255_MUE_1/'},
+ {id:'spectre-mini',name:'Spectre Blast 小游戏',start:'2026-11-11',end:'2026-12-15',priority:38,minutes:15,kind:'weekly',min:260,optional:true,detail:'Lv.260+、已开启 Authentic Force 后可参加，想玩或需要奖励才做。',why:'选做 · 不是新账号必做',url:'https://www.maplesea.com/updates/view/v255_MUE_2/'},
+ {id:'lethe-support',name:'Lethe 专属成长任务',start:'2026-11-11',end:'2027-03-09',priority:15,minutes:15,kind:'info',min:1,optional:true,detail:'只有玩 Lethe 才需要；你选 Kaiser 可以先忽略。',why:'非 Kaiser 必做',url:'https://www.maplesea.com/updates/view/v255_ETC/'},
+ {id:'sunday-nov15',name:'Sunday Maple · Lethe EXP Frenzy',start:'2026-11-15',end:'2026-11-15',priority:15,minutes:2,kind:'info',min:101,optional:true,detail:'11/15 的 Sunday Maple 特别奖励；关注是否对自己的角色有用。',why:'下周日再看',url:'https://www.maplesea.com/events/view/v255_Sunday/'},
+ {id:'momentum-plus',name:'Momentum Pass PLUS（Lv.280+）',start:'2026-11-11',end:'2026-12-15',priority:10,minutes:3,kind:'info',min:280,optional:true,detail:'Lv.280+ 才能参加，付费奖励可选；新 Kaiser 不建议现在花钱。',why:'后期才看',url:'https://www.maplesea.com/updates/view/v255_EP/'},
+];
+if(!s.eventsV52||typeof s.eventsV52!=='object')s.eventsV52={};
+function eventBucket(e){const t=sgToday();return t<e.start?'upcoming':(e.end&&t>e.end?'expired':'live')}
+function eventDoneKey(e){if(e.kind==='daily')return e.id+'@'+sgToday();if(e.kind==='weekly')return e.id+'@'+sgWeek();return e.id}
+function eventDone(e){return !!s.eventsV52[eventDoneKey(e)]}
+function eventPriority(e){let score=e.priority;if(e.end){let d=(Date.parse(e.end+'T00:00:00Z')-Date.parse(sgToday()+'T00:00:00Z'))/86400000;if(d>=0&&d<=2)score+=7}return score}
+function eventEligible(e){return Number(s.profile.level||0)>=(e.min||1)}
+function eventRecommended(){return eventsV52.filter(e=>eventBucket(e)==='live'&&eventEligible(e)&&e.kind!=='info'&&!e.optional&&!eventDone(e)).sort((a,b)=>eventPriority(b)-eventPriority(a))}
+function eventCheckHTML(e){return e.kind==='info'?'':`<label class="event-check"><input type="checkbox" data-event-check="${e.id}" ${eventDone(e)?'checked':''}><span>${eventDone(e)?'已标记完成':'完成后打勾（只在本机）'}</span></label>`}
+function eventCardHTML(e){const bucket=eventBucket(e),ok=eventEligible(e),done=eventDone(e);
+ const term=e.kind==='daily'?'每日':e.kind==='weekly'?'本周':'一次性';
+ return `<article class="focus-row ${done?'is-done':''}"><div class="focus-row-main"><span class="focus-row-title">${esc(e.name)}</span><span class="hint">${bucket==='expired'?'已结束':bucket==='upcoming'?'开始 '+e.start:!ok?'Lv.'+e.min+' 才开放':term+' · '+(e.minutes<=5?'几分钟':'选做')} · 截止 ${e.end||'待公告'}</span><details class="event-more"><summary>详情</summary><p>${esc(e.detail)}</p><a href="${e.url}" target="_blank" rel="noopener noreferrer">官方公告 ↗</a></details></div>${bucket==='live'&&ok&&e.kind!=='info'?`<label class="focus-check"><input type="checkbox" data-event-check="${e.id}" ${done?'checked':''} aria-label="标记 ${esc(e.name)} 已完成"><span>${done?'已完成':'完成'}</span></label>`:''}</article>`}
+function quickEventHTML(e){return `<label class="quick-event"><input type="checkbox" data-event-check="${e.id}" ${eventDone(e)?'checked':''}><span class="quick-text"><strong>${esc(e.name)}</strong><small>${e.kind==='daily'?'每天':'一次性'} · 截止 ${e.end||'待公告'}</small></span><a href="${e.url}" target="_blank" rel="noopener noreferrer" title="官方活动">说明 ↗</a></label>`}
+function renderFocus(){
+ const focus=$('focusTasks');if(!focus)return;
+ const picks=eventRecommended().slice(0,3);focus.innerHTML=picks.length?picks.map(eventCardHTML).join(''):'<div class="focus-empty">今天的优先任务都标记完成啦。可以安心玩 Kaiser，或者休息！</div>';
+ const me=s.profile.ign&&s.profile.syncedAt?'已同步 '+esc(s.profile.ign)+' · Lv.'+s.profile.level:'新 Kaiser · Challengers World 规划';$('focusIdentity').textContent=me;
+ if(document.activeElement!==$('focusLevel'))$('focusLevel').value=s.profile.level||10;
+}
+function bindEventCheckboxes(){document.querySelectorAll('[data-event-check]').forEach(box=>{box.onchange=()=>{const e=eventsV52.find(t=>t.id===box.dataset.eventCheck);if(!e)return;const key=eventDoneKey(e);if(box.checked)s.eventsV52[key]=true;else delete s.eventsV52[key];save();renderEvents();renderAdvice()}})}
+function renderEvents(){
+ const live=eventsV52.filter(e=>eventBucket(e)==='live').sort((a,b)=>eventPriority(b)-eventPriority(a));
+ const next=eventsV52.filter(e=>eventBucket(e)==='upcoming').sort((a,b)=>a.start.localeCompare(b.start));
+ const ended=eventsV52.filter(e=>eventBucket(e)==='expired').sort((a,b)=>(b.end||'').localeCompare(a.end||''));
+ const picks=eventRecommended().slice(0,3);
+ $('eventLiveList').innerHTML=picks.map(eventCardHTML).join('')||'<p class="hint">目前没有新的必做事项，安心玩！</p>';
+ $('eventOtherList').innerHTML=live.filter(e=>!picks.includes(e)).map(eventCardHTML).join('')||'<p class="hint">没有其他进行中的活动。</p>';
+ $('eventUpcomingList').innerHTML=next.map(eventCardHTML).join('')||'<p class="hint">目前没有新的待开放项目。</p>';
+ $('eventExpiredList').innerHTML=ended.map(eventCardHTML).join('')||'<p class="hint">目前没有已结束活动。</p>';
+ const quick=picks.map(quickEventHTML).join('')||'<p class="hint">今天没有必须赶的免费活动。</p>';
+ $('homeEventHighlights').innerHTML=quick;$('routineEventHighlights').innerHTML=quick;
+ $('eventActiveCount').textContent=String(live.length);$('eventPriorityCount').textContent=String(picks.length);
+ renderFocus();bindEventCheckboxes();
+}
+/* v5.2 class models. Weapon constants from MapleStory Wiki, NOT job DPS ratios. */
+const JOB_ROWS=[
+// id, name, group, main stat, current weapon constant, playstyle, skill name, notes
+['hero','Hero','Explorer','STR',1.44,'burst','Raging Blow','双手剑/斧用 1.44；单手武器改 1.34。'],
+['paladin','Paladin','Explorer','STR',1.34,'hybrid','Blast','双手用 1.34；单手武器改 1.24。'],
+['darkknight','Dark Knight','Explorer','STR',1.49,'hybrid','Gungnir Descent','有生存能力，技能冷却与输出空窗要自己评估。'],
+['fpmage','Arch Mage (F/P)','Explorer','INT',1.2,'damage-over-time','Flame Haze','持续伤害与多段技能要额外计入，单一技能示范不完整。'],
+['ilmage','Arch Mage (I/L)','Explorer','INT',1.2,'hybrid','Chain Lightning','爆发与持续输出都要记录。'],
+['bishop','Bishop','Explorer','INT',1.2,'support','Angel Ray','辅助价值不等于 Solo Damage；不能仅靠 CP 排名。'],
+['bowmaster','Bowmaster','Explorer','DEX',1.3,'sustained','Hurricane','连续攻击职业要用总 Lines / 180 秒校准。'],
+['marksman','Marksman','Explorer','DEX',1.35,'burst','Snipe','注意技能发射频率、爆发与 Boss 走位。'],
+['pathfinder','Pathfinder','Explorer','DEX',1.3,'hybrid','Cardinal Blast','多技能连动，单技能算法只看一个片段。'],
+['nightlord','Night Lord','Explorer','LUK',1.75,'burst','Quad Star','爆发期与非爆发期差异大。'],
+['shadower','Shadower','Explorer','LUK',1.3,'sustained','Assassinate','副属性可能包含 STR+DEX，按角色面板输入。'],
+['dualblade','Dual Blade','Explorer','LUK',1.3,'burst','Phantom Blow','副属性可能包含 STR+DEX，按角色面板输入。'],
+['buccaneer','Buccaneer (Viper)','Explorer','STR',1.7,'hybrid','Octopunch','输出有技能联动与自动追击。'],
+['corsair','Corsair (Captain)','Explorer','DEX',1.5,'summon','Rapid Fire','召唤物、船员等额外攻击独立计算。'],
+['cannoneer','Cannoneer','Explorer','STR',1.5,'burst','Cannon Buster','多段爆发技能应计总伤害和冷却。'],
+['dawnwarrior','Dawn Warrior (Soul Master)','Cygnus','STR',1.34,'hybrid','Solar Slash','双手 1.34，单手 1.24。'],
+['blazewizard','Blaze Wizard','Cygnus','INT',1.2,'hybrid','Orbital Flame','轨道攻击的实际命中次数很重要。'],
+['windarcher','Wind Archer','Cygnus','DEX',1.3,'sustained','Song of Heaven','自动追踪技能需以 BA 验证。'],
+['nightwalker','Night Walker','Cygnus','LUK',1.75,'burst','Quintuple Star','分身 / 蝙蝠 / 额外攻击未包含在单技能默认值。'],
+['thunderbreaker','Thunder Breaker (Striker)','Cygnus','STR',1.7,'sustained','Annihilate','连招和位移命中率影响 Boss 表现。'],
+['mihile','Mihile','Cygnus','STR',1.24,'hybrid','Radiant Cross','防御反击和实战生存不可直接变成 DPS。'],
+['aran','Aran','Heroes','STR',1.49,'burst','Beyond Blade','Combo 和爆发状态要算作条件加成。'],
+['evan','Evan','Heroes','INT',1.2,'hybrid','Mana Burst','龙与融合技能需要分开统计。'],
+['mercedes','Mercedes','Heroes','DEX',1.3,'burst','Ishtar Ring','连段与高爆发要结合 BA。'],
+['phantom','Phantom','Heroes','LUK',1.3,'hybrid','Mille Aiguilles','偷取技能、技能版本可能改变技能循环。'],
+['luminous','Luminous','Heroes','INT',1.2,'hybrid','Ender','光暗状态让实际伤害与示范有差异。'],
+['shade','Shade (Eunwol)','Heroes','STR',1.7,'hybrid','Spirit Claw','注意追击与技能冷却。'],
+['battlemage','Battle Mage','Resistance','INT',1.2,'support','Finishing Blow','Aura 与团队效益不等于自己的总输出。'],
+['wildhunter','Wild Hunter','Resistance','DEX',1.35,'summon','Wild Arrow Blast','豹 + 召唤等攻击需分别计算。'],
+['mechanic','Mechanic','Resistance','DEX',1.5,'summon','Heavy Salvo','召唤物命中比例是主要误差来源。'],
+['blaster','Blaster','Resistance','STR',1.7,'combo','Revolving Cannon VI','操作手速、连招取消很影响同 CP 的实战成绩。'],
+['demonslayer','Demon Slayer','Resistance','STR',1.2,'hybrid','Demon Impact','技能形态和爆发会改变总输出。'],
+['demonavenger','Demon Avenger','Resistance','HP',1.3,'hybrid','Execution','核心属性是 HP，不能用普通 4×主属性计算；请用 BA 校准。'],
+['xenon','Xenon','Resistance','STR+DEX+LUK',1.3125,'burst','Mecha Purge','主属性填 STR+DEX+LUK 总和；不同装备分配需自己确认。'],
+['kaiser','Kaiser','Nova','STR',1.34,'hybrid','Giga Slasher VI','变身阶段与不同技能倍率需要分开测量。'],
+['kain','Kain','Nova','DEX',1.3,'burst','Falling Dust','连段与死亡祝福额外打击应单独计。'],
+['cadena','Cadena','Nova','LUK',1.3,'combo','Chain Arts','副属性可有 STR+DEX；命中率与连招难度较敏感。'],
+['angelicbuster','Angelic Buster','Nova','DEX',1.7,'burst','Trinity','短时间爆发强度由实际技能循环决定。'],
+['zero','Zero','Transcendent','STR',1.34,'combo','Alpha / Beta','Alpha 武器 1.34；切到 Beta 时改为 1.49。'],
+['kinesis','Kinesis','Friends','INT',1.2,'hybrid','Psychic Grab','PP 资源管理影响 180 秒输出次数。'],
+['adele','Adele','Flora','STR',1.3,'hybrid','Divide','剑气 / 召唤物应另外计算。'],
+['illium','Illium','Flora','INT',1.2,'summon','Javelin','水晶位置和爆发状态影响实际命中。'],
+['khali','Khali','Flora','LUK',1.3,'combo','Arts: Flurry','Void 与 Hex 的取消/连段要以 BA 校准。'],
+['ark','Ark','Flora','STR',1.7,'hybrid','Abyssal Charge Drive','Specter 形态与常态分开计算更合理。'],
+['hayato','Hayato','Sengoku','STR',1.25,'combo','Shinsoku','剑气与多段攻击要自行补入 Lines。'],
+['kanna','Kanna','Sengoku','INT',1.35,'summon','Shikigami Haunting','独特 M.ATT 换算机制和召唤伤害未被完全建模。'],
+['lara','Lara','Anima','INT',1.2,'summon','Essence Sprinkle','龙脉与召唤物伤害需要记录。'],
+['hoyoung','Hoyoung','Anima','LUK',1.3,'combo','Heaven: Consuming Flames','符咒、卷轴、分身等额外攻击需校准。'],
+['ren','Ren','Anima','STR',1.3,'hybrid','Dancing Annihilation','留意剑术连段和技能打击次数。'],
+['lynn','Lynn','Jianghu','INT',1.34,'hybrid','Forest’s Protection','特殊机制与召唤技能会影响实战。'],
+['moxuan','Mo Xuan','Jianghu','DEX',1.75,'combo','Xuanshan Techniques','连续命中与 Qi 技能需要实际校准。'],
+['lethe','Lethe','Demon','INT',1.2,'summon','Templar Onslaught','召唤兽会自动攻击；请把召唤额外伤害纳入 BA，而不是只算手动技能。']
+];
+const JOBS_V52=JOB_ROWS.map(x=>({id:x[0],name:x[1],group:x[2],stat:x[3],k:x[4],style:x[5],skill:x[6],note:x[7]}));
+const styleNames={burst:'爆发型',hybrid:'混合型',sustained:'持续输出',summon:'召唤 / 多源',combo:'连招操作',support:'辅助兼输出','damage-over-time':'持续伤害'};
+if(!s.profile.job||!JOBS_V52.some(x=>x.id===s.profile.job))s.profile.job='lethe';
+if(!s.skillsV52||typeof s.skillsV52!=='object')s.skillsV52={};
+const currentJob=()=>JOBS_V52.find(j=>j.id===s.profile.job)||JOBS_V52[JOBS_V52.length-1];
+function skillDefaults(job){return {main:Number(s.profile.stat)||0,sub:0,att:0,weapon:job.k,damage:0,boss:0,final:0,critRate:0,critDmg:0,ied:Number(s.profile.ied)||0,extraIed:0,pdr:380,mastery:95,elementIgnore:0,skillPct:0,lines:0,casts:0,uptime:75,skillName:job.skill,ba:0,bossHp:0,maxFight:15,bossUptime:70,targetBoss:'nlotus'}}
+function classParams(){const j=currentJob();if(!s.skillsV52[j.id])s.skillsV52[j.id]=skillDefaults(j);return s.skillsV52[j.id]}
+function jobSelectorOptions(){return [...new Set(JOBS_V52.map(j=>j.group))].map(g=>`<optgroup label="${esc(g)}">${JOBS_V52.filter(j=>j.group===g).map(j=>`<option value="${j.id}">${esc(j.name)}</option>`).join('')}</optgroup>`).join('')}
+function renderJobSelectors(){for(const id of ['profileJob','skillJob']){$(id).innerHTML=jobSelectorOptions();$(id).value=s.profile.job;$(id).onchange=()=>{s.profile.job=$(id).value;save();renderJobSelectors();renderJobInfo();loadSkillForm();renderBosses()}}}
+function renderJobInfo(){const j=currentJob();$('skillJobInfo').innerHTML=`<div class="job-overview"><div class="kpi">${esc(j.name)}</div><div class="chipbox"><span class="pill">${esc(j.group)}</span><span class="pill blue">${esc(styleNames[j.style]||j.style)}</span><span class="pill gold">${esc(j.stat)} · 系数 ${j.k}</span></div><p>建议关注：${esc(j.note)}</p><p class="hint">武器系数来自职业武器类型资料，不代表 ${esc(j.name)} 比其他职业强 ${j.k} 倍。</p></div>`}
+function loadSkillForm(){const v=classParams();document.querySelectorAll('[data-sk]').forEach(el=>{el.value=v[el.dataset.sk]??'';el.oninput=()=>{const key=el.dataset.sk;v[key]=el.type==='number'?(Number.isFinite(+el.value)?Math.max(0,+el.value):0):el.value;save();renderSkillResults()}});$('skillTargetBoss').value=v.targetBoss||'nlotus';renderSkillResults()}
+function skillNumber(v,k){return Number.isFinite(+v[k])?Math.max(0,+v[k]):0}
+function renderSkillResults(){const v=classParams(),j=currentJob();const N=k=>skillNumber(v,k);const main=N('main'),sub=N('sub'),att=N('att');const pdr=Math.min(4,N('pdr')/100);const effectiveIed=1-(1-Math.min(1,N('ied')/100))*(1-Math.min(1,N('extraIed')/100));const defense=Math.max(0,1-pdr*(1-effectiveIed));const critFactor=1+Math.min(1,N('critRate')/100)*(.35+N('critDmg')/100);const elementFactor=.5*(1+Math.min(1,N('elementIgnore')/100));
+ const statMult=4*main+sub;
+ const canCalc=j.id!=='demonavenger'&&main>0&&att>0&&N('skillPct')>0&&N('lines')>0;
+ const perCast=canCalc?0.01*N('weapon')*statMult*att*(1+(N('damage')+N('boss'))/100)*(1+N('final')/100)*critFactor*defense*elementFactor*(N('mastery')/100)*(N('skillPct')/100)*N('lines'):0;
+ const cycle=perCast*N('casts')*(Math.min(100,N('uptime'))/100);
+ $('skillHit').textContent=canCalc?compact(perCast):'—';$('skillCycle').textContent=canCalc?compact(cycle):'—';
+ $('skillCalculationHint').textContent=j.id==='demonavenger'?'Demon Avenger 的 HP 公式特殊；本页不冒用普通职业公式，请看右侧 BA 实测。':!canCalc?'填写主属性、ATT、技能伤害 % 和 Lines 才显示。':`武器系数 ${N('weapon')} × 角色属性；有效 IED ${(effectiveIed*100).toFixed(1)}%，对 PDR ${N('pdr')}% 的防御倍率 ≈ ${(defense*100).toFixed(1)}%。未含额外打击、等级差等。`;
+ const b=B.find(x=>x.id===v.targetBoss)||B.find(x=>x.id==='nlotus');const p=s.profile;const statusLines=[];
+ statusLines.push(`当前职业：<strong>${esc(j.name)}</strong> · Boss：<strong>${esc(b.name+' '+b.mode)}</strong>`);
+ statusLines.push(`入场要求 Lv.${b.level}+ ${Number(p.level||0)>=b.level?'✓':'（你的等级不足）'}；${b.af?'建议 ARC ≥'+b.af+'（'+(Number(p.af||0)>=b.af?'满足':'需补')+'）':'Arcane 条件以游戏内为准'}`);
+ statusLines.push(`IED 参考 ${b.ied?b.ied+'%':'—'}，当前 ${Number(p.ied||0)}%；参考 CP ${b.cpLow?b.cpLow+'M–'+b.cpHigh+'M':'无稳定区间'}，你的 ${Number(p.cp||0)}M。`);
+ $('skillBossAdvice').innerHTML=`<div class="skill-flag">${statusLines.map(escExceptStrong).join('<br>')}<br><span class="muted">各职业输出循环与操作水平不同，通用 CP 只能作为筛选，不能当作职业专属硬门槛。</span></div>`;
+ const ba=N('ba'),hp=N('bossHp'),eff=Math.min(1,N('bossUptime')/100),limit=N('maxFight');let clearM=hp>0&&ba>0&&eff>0?hp/(ba/3*eff):0;
+ const needBa=hp>0&&eff>0&&limit>0 ? hp*3/(limit*eff):0; $('skillRequiredBA').textContent=needBa>0?`要在 ${limit} 分钟内打完，你这只 ${j.name} 在实战命中比例 ${Math.round(eff*100)}% 下，3 分钟 BA 约需 ≥ ${Number(needBa.toFixed(2))}T（粗估，不包含转场与额外机制）。`:'填 Boss HP、计划分钟和实战比例后，会算出需要多少 3 分钟 BA。';
+ $('skillClearTime').textContent=clearM>0?(clearM<1?Math.round(clearM*60)+' sec':clearM.toFixed(1)+' min'):'—';let badge=$('skillBossFlag');badge.textContent=clearM<=0?'需要 BA + Boss HP':clearM<=limit?'可作为试打目标':'预计较吃力';badge.className='pill '+(clearM<=0?'blue':clearM<=limit?'':'gold');
+}
+function escExceptStrong(t){return t.replace(/<(?!\/?strong\b)[^>]+>/g,'')}
+$('skillTargetBoss').innerHTML=B.filter(x=>x.freq!=='daily').map(b=>`<option value="${b.id}">${esc(b.name)} · ${esc(b.mode)}</option>`).join('');
+$('skillTargetBoss').onchange=()=>{classParams().targetBoss=$('skillTargetBoss').value;save();renderSkillResults()};
+$('skillDemo').onclick=()=>{if(!confirm('只覆盖当前职业的 Skill Lab 输入，载入教学用数值？'))return;const j=currentJob(),v=classParams();Object.assign(v,{main:30000,sub:5000,att:3000,weapon:j.k,damage:80,boss:250,final:70,critRate:100,critDmg:75,ied:95,extraIed:0,pdr:380,mastery:95,elementIgnore:5,skillPct:1000,lines:12,casts:20,uptime:75,skillName:j.skill,ba:0,bossHp:0,bossUptime:70,maxFight:15});save();loadSkillForm()};
+// The existing Boss Library already displays only general CP, with a visible class-specific caveat.
+const oldRenderBosses=renderBosses;
+renderBosses=function(){oldRenderBosses();const j=currentJob();$('bossCount').textContent+=` · Main: ${j.name}`;const list=$('bosslist');if(list)list.querySelectorAll('.boss').forEach(el=>{const info=el.querySelector('p');if(info){const span=document.createElement('div');span.className='meta';span.textContent=`${j.name} · ${styleNames[j.style]}：实际门槛请用 Skill Lab 的技能数据 + BA 校准。`;info.insertAdjacentElement('afterend',span)}})};
+// All navigation buttons are real tab actions.
+document.querySelectorAll('[data-go]').forEach(bt=>bt.onclick=()=>jump(bt.dataset.go));
+renderJobSelectors();renderJobInfo();loadSkillForm();renderBosses();renderEvents();
+window.addEventListener('focus',renderEvents);document.addEventListener('visibilitychange',()=>{if(!document.hidden)renderEvents()});
+
+// Prioritize urgent, free MapleSEA events over the generic growth advice.
+const previousRenderAdvice=renderAdvice;
+renderAdvice=function(){previousRenderAdvice();const e=eventRecommended().find(e=>eventPriority(e)>=95);$('jumpboss').textContent=e?'去 Events 做活动':'查看可挑战 Boss';$('jumpboss').onclick=()=>jump(e?'events':'bosses');if(e){$('nextname').textContent='先做限时活动：'+e.name;$('nextdetail').textContent=`${e.minutes} 分钟左右即可打卡。${e.detail} 打开 Events 页面看官方规则。`}};
+renderAdvice();
+
+
+/* v5.4 — Boss expanded from MapleStory Wiki and Mapler House, 2026-08 HP/Force table. NOT SEA guaranteed stats. */
+const BOSS_HP_REFERENCE='https://www.maplerhouse.com/guide/boss/boss-overview';
+const BASE_BOSS_54=[["nlotus",1.57,300,0,"激光、平台和落物。先用 Practice 熟悉阶段。"],["hlotus",33.5,300,0,"三阶段激光与落物；保留位移和无敌技能。"],["ndamien",1.2,300,0,"烙印叠层、空中阶段、蓝球；抓地面输出窗口。"],["hdamien",36,300,0,"烙印与蓝球管理，空中阶段较多。"],["nslime",5,300,0,"引导弹丸进入机关；利用倒地爆发。"],["elucid",12,300,0,"第一阶段小怪与爆弹，第二阶段平台走位。"],["nlucid",24,300,0,"第一阶段石像与炸弹，第二阶段平台；避免过早爆发。"],["ewill",16.8,300,0,"分两房、镜子/蛛网机制，先熟练测试与安全区。"],["nwill",25.2,300,0,"月光、地板与测试机制；伤害足够也要过机制。"],["bm",472.5,300,0,"四阶段，诅咒与黑白机制；建议固定队和练习模式。"],["xbm",4810,300,0,"Extreme 月常，顶级队伍向内容。"]];
+for(const r of BASE_BOSS_54){const b=B.find(x=>x.id===r[0]);if(b){b.hpT=r[1];b.pdr=r[2];b.sac=r[3];b.note=r[4]+'（参考资料可能与 SEA 补丁不同）';}}
+const EXTRA_BOSS_54=[["ezak","Zakum","Easy","daily",50,null,0,0,0,"beginner","熟悉最基础 Boss。","",false,null],["evil","Von Leon","Easy","daily",125,null,0,0,0,"beginner","需 Lion King Castle 前置。","",false,null],["nvl","Von Leon","Normal","daily",125,null,0,0,0,"beginner","准备前置与走位。","",false,null],["eark","Arkarium","Easy","daily",140,null,0,0,0,"beginner","注意反伤与全屏攻击。","",false,null],["nmori","Mori Ranmaru","Normal","daily",120,null,0,0,0,"beginner","区域 Boss，依 MSEA Boss UI 为准。","",false,null],["npie","Pierre","Normal","daily",125,null,0,0,0,"beginner","注意颜色机制。","",false,null],["nvon","Von Bon","Normal","daily",125,null,0,0,0,"beginner","时间钟与安全区。","",false,null],["nqueen","Crimson Queen","Normal","daily",125,null,0,0,0,"beginner","观察四个面具阶段。","",false,null],["nvell","Vellum","Normal","daily",125,null,0,0,0,"beginner","地面蛇头，避免硬站桩。","",false,null],["akechi","Akechi Mitsuhide","Normal","weekly",200,null,0,0,0,"beginner","战斗有反伤与变化机制，需检查区域可用性。","",false,null],["omni","OMNI-CLN","Normal","daily",140,null,0,0,0,"beginner","特殊日常 Boss，是否开放以游戏为准。","",false,null],["hlucid","Lucid","Hard","weekly",220,117.6,360,0,300,"mid","三阶段有较严格的最终输出检查。","",false,null],["hwill","Will","Hard","weekly",235,126,760,0,300,"mid","多房与蛛网，先把测试机制练熟。","",false,null],["cslime","Guardian Angel Slime","Chaos","weekly",210,90,0,0,300,"mid","高 HP 与机关窗口，输出爆发安排关键。","",false,null],["ngloom","Giant Monster Gloom","Normal","weekly",255,25.5,730,0,300,"end","触手/恐惧机制；对准可输出时段。","",false,null],["cgloom","Giant Monster Gloom","Chaos","weekly",255,127.5,730,0,300,"end","恐惧与触手阶段，练存活和爆发节奏。","",false,null],["nvhilla","Verus Hilla","Normal","weekly",250,88,820,0,300,"end","红线、灵魂与治疗限制，机制非常重要。","",false,null],["hvhilla","Verus Hilla","Hard","weekly",250,176,900,0,300,"end","红线与灵魂管理，固定队较容易配合。","",false,null],["ndark","Guard Captain Darknell","Normal","weekly",255,26,850,0,300,"end","落石与精英怪组合攻击，先保住生存。","",false,null],["hdark","Guard Captain Darknell","Hard","weekly",255,157.5,850,0,300,"end","高压招式与杂兵，空档输出比站桩重要。","",false,null],["exlotus","Lotus","Extreme","weekly",190,1810,0,0,380,"end","Extreme Lotus 专属机制，进阶队伍。","",false,null],["nseren","Chosen Seren","Normal","weekly",260,208,0,200,380,"end","昼夜与太阳计量；队伍熟悉循环。","",false,null],["hseren","Chosen Seren","Hard","weekly",260,483,0,200,380,"end","昼夜循环、太阳机制影响有效输出。","",false,null],["exseren","Chosen Seren","Extreme","weekly",260,6480,0,200,380,"end","顶级队伍挑战，需计划阶段爆发。","",false,null],["ekalos","Kalos","Easy","weekly",265,357,0,200,380,"end","塔与系统警报，需要团队分配机制。","",false,null],["nkalos","Kalos","Normal","weekly",265,1060,0,300,380,"end","系统干扰与塔机制，注意团队沟通。","",false,null],["ckalos","Kalos","Chaos","weekly",265,5120,0,330,380,"end","多房/多阶段系统压力很高。","",false,null],["exkalos","Kalos","Extreme","weekly",265,21570,0,440,380,"end","极限组队 Boss。","",false,null],["ekaling","Kaling","Easy","weekly",275,921,0,230,380,"end","三灾厄分工，推进每一阶段。","",false,null],["nkaling","Kaling","Normal","weekly",275,3930,0,330,380,"end","三灾厄协调和阶段衔接。","",false,null],["hkaling","Kaling","Hard","weekly",275,11840,0,350,380,"end","高难度多人战斗。","",false,null],["exkaling","Kaling","Extreme","weekly",275,54590,0,480,380,"end","终局极限难度。","",false,null],["eadv","First Adversary","Easy","weekly",270,571.09,0,220,380,"end","多阶段节奏变化，观察 Boss UI。","",false,null],["nadv","First Adversary","Normal","weekly",270,1640,0,320,380,"end","不同阶段的机制切换和站位。","",false,null],["hadv","First Adversary","Hard","weekly",270,10590,0,340,380,"end","高阶团队 Boss。","",false,null],["exadv","First Adversary","Extreme","weekly",270,33560,0,460,380,"end","极限难度数据为参考，版本规则需核对。","",false,null],["nmalefic","Malefic Star","Normal","weekly",280,3260,0,400,380,"end","三阶段，对应 Grandis 高阶挑战。","",false,null],["hmalefic","Malefic Star","Hard","weekly",280,14700,0,550,380,"end","多阶段高强度 Boss，建议固定队。","",false,null],["nlimbo","Limbo","Normal","weekly",285,6480,0,500,380,"end","多阶段攻击窗口，组队与站位。","",false,null],["hlimbo","Limbo","Hard","weekly",285,12550,0,500,380,"end","高端三阶段；生命值来源为 KMS 社区表。","",false,null],["exlimbo","Limbo","Extreme","weekly",285,44600,0,500,380,"end","KMS 1.2.420 新 Extreme；未确认 MapleSEA 已实装。","",true,null],["nbald","Baldrix","Normal","weekly",290,9060,0,700,380,"end","三阶段，自身特殊机制和团队时间分配。","",false,null],["hbald","Baldrix","Hard","weekly",290,20340,0,700,380,"end","高阶三阶段，真实性以 SEA UI 为准。","",false,null],["exbald","Baldrix","Extreme","weekly",290,53900,0,700,380,"end","KMS 1.2.420 新 Extreme；未确认 MapleSEA 已实装。","",true,null],["njup","Jupiter","Normal","weekly",295,10260,0,810,380,"end","需要 [Geardrock] Epilogue，最多 3 人。","https://www.maplesea.com/updates/view/v252_Jupiter/",false,null],["hjup","Jupiter","Hard","weekly",295,49400,0,810,380,"end","需要 Geardrock 前置，Hard 有专属奖励。","https://www.maplesea.com/updates/view/v252_Jupiter/",false,null],["nmalicia","Malicia","Normal","weekly",250,null,0,0,380,"end","Blood Moon Forest；Jewel 机制，最多 3 人，需 [With Will in Hand]。","https://www.maplesea.com/updates/view/v254_Malicia/",false,null],["exmalicia","Malicia","Extreme","weekly",250,null,0,0,380,"end","需配合 Jewel 强化与三阶段机制，最多 3 人。","https://www.maplesea.com/updates/view/v254_Malicia/",false,null],["ebellona","Bellona","Easy","weekly",280,null,0,0,380,"future","OVERDRIVE 11/11 预告：Lv280+，机制、HP 和 Crystal 等正式补丁。","https://www.maplesea.com/news/view/MOT_SG_OVERDRIVE/",true,null],["nbellona","Bellona","Normal","weekly",280,null,0,0,380,"future","OVERDRIVE 预告：Eternal 配件奖励，详细规则待公告。","https://www.maplesea.com/news/view/MOT_SG_OVERDRIVE/",true,null],["hbellona","Bellona","Hard","weekly",280,null,0,0,380,"future","OVERDRIVE 预告：顶级模式，11/11 才核实。","https://www.maplesea.com/news/view/MOT_SG_OVERDRIVE/",true,null],["maerin","Maerin","Seasonal","weekly",200,null,0,0,0,"future","Challengers World 季节 Boss，非一般周常 Crystal，开放条件待正式活动。","https://www.maplesea.com/news/view/MOT_SG_OVERDRIVE/",true,null]];
+for(const r of EXTRA_BOSS_54){if(B.some(b=>b.id===r[0]))continue; B.push({id:r[0],name:r[1],mode:r[2],freq:r[3],level:r[4],hpT:r[5],af:r[6],sac:r[7],pdr:r[8],tier:r[9],note:r[10],official:r[11],future:r[12],price:r[13],cpLow:0,cpHigh:0,ied:0,noCrystal:r[0]==='maerin'});}
+
+const MSEA_PRICE_254={"ezak":113843,"nmori":426800,"npie":562603,"nvon":562603,"nqueen":562603,"nvell":562603,"evil":614909,"eark":669542,"omni":726501,"nvl":847393,"akechi":21700000,"hlucid":85000000,"cgloom":94500000,"nvhilla":96300000,"cslime":99000000,"hwill":104400000,"hdark":124200000,"hvhilla":139700000,"ngloom":54000000,"ndark":58500000,"nseren":289800000,"nmalicia":290200000,"ekalos":338800000,"eadv":361000000,"ekaling":368200000,"hseren":423000000,"nkalos":495000000,"nadv":530000000,"nkaling":575500000,"exlotus":588000000,"nmalefic":594000000,"nlimbo":900000000,"ckalos":1056000000,"nbald":1200000000,"hkaling":1232000000,"hadv":1260000000,"njup":1360000000,"hlimbo":1930000000,"hbald":2160000000,"hmalefic":2256000000,"exseren":2280000000,"exkalos":2565000000,"exadv":2920000000,"hjup":3000000000,"exkaling":3040000000,"exmalicia":3160000000,"exbald":null,"exlimbo":null};
+for(const b of B){if(Object.prototype.hasOwnProperty.call(MSEA_PRICE_254,b.id)&&MSEA_PRICE_254[b.id]!=null){b.price=MSEA_PRICE_254[b.id];b.priceSource='MSEA v254 community';}}
+
+// Earlier B entries should be grouped by progression stage, not just numeric CP.
+B.forEach(b=>{if(!b.tier)b.tier=b.freq==='daily'||['ecyg','hhilla','cpb','ncyg','czak','cqueen','cvon','cpierre','hmag','cvell','npno','cpap'].includes(b.id)?'beginner':b.freq==='monthly'||['hlotus','hdamien'].includes(b.id)?'end':'mid';if(b.hpT==null)b.hpT=null;if(b.sac==null)b.sac=0;if(b.pdr==null)b.pdr=b.freq==='daily'?0:300;if(b.future==null)b.future=false;if(b.official==null)b.official='';if(b.price==null)b.price=null;});
+const bossHpCompact=b=>b.hpT==null?'资料待核实':compact(b.hpT*1e12);
+function bossStageLabel(b){return b.future?'未实装 / 预告':b.tier==='beginner'?'新手 ~ CRA':b.tier==='mid'?'进阶':'高阶 / 终局'}
+function bossFlag(b){const level=Number(s.profile.level||0),af=Number(s.profile.af||0),cp=Number(s.profile.cp||0);if(b.future)return ['即将推出 / 核实中','gold'];if(level<b.level)return ['等级不足','gold'];if(b.af>0&&af<b.af)return ['ARC 待补','gold'];if(b.cpLow>0&&cp>0&&cp<b.cpLow)return ['建议先练习','blue'];if(b.cpLow>0&&cp>=b.cpLow)return ['可先 Practice',''];return ['核实入场 + Practice','blue']}
+function bossRequiredBA(b){const n=+document.getElementById('bossParty').value||1,minutes=+document.getElementById('bossTargetMin').value||20;return b.hpT!=null&&b.hpT>0 ? (b.hpT*3/(minutes*.7*n)) : null}
+function bossCard54(b){const st=bossFlag(b),havePrice=b.price!=null||Number(s.prices[b.id])>0, solo=havePrice?compact(price(b)):'售价未核实', hp=bossHpCompact(b),need=bossRequiredBA(b),guide=b.official||BOSS_HP_REFERENCE;
+return `<article class="boss boss-v54 ${b.future?'future-boss':''}"><div class="b-head"><div><strong>${esc(b.name)} · ${esc(b.mode)}</strong><small>${esc(bossStageLabel(b))} · ${esc(b.freq.toUpperCase())} · Lv.${b.level}+</small></div><span class="pill ${st[1]}">${st[0]}</span></div>
+<div class="bstat"><div><small>Boss HP（参考）</small><strong>${hp}</strong></div><div><small>3min BA / 人 · 参考</small><strong>${need==null?'—':compact(need*1e12)}</strong></div><div><small>Force（参考）</small><strong>${b.af?'ARC '+b.af:b.sac?'AUT '+b.sac:'—'}</strong></div><div><small>PDR（参考）</small><strong>${b.pdr?b.pdr+'%':'—'}</strong></div></div>
+<div class="boss-tags"><span>IED ${b.ied?b.ied+'% 建议':'按 Boss PDR 校准'}</span><span>Crystal ${esc(solo)}</span>${b.future?'<span>尚未确认在 MapleSEA 开放</span>':''}</div>
+<details><summary>机制 / 前置 / 详细说明</summary><div class="boss-detail" style="margin-top:8px">${esc(b.note)}<br>${b.cpLow?'旧版通用 CP 参考：'+b.cpLow+'–'+b.cpHigh+'M；不是职业门槛。':'此 Boss 没有可信的固定 Solo CP 范围。'}<br>当前 Main：${esc(currentJob().name)} · ${esc(styleNames[currentJob().style]||'')}。<br>${need!=null?'BA 用 70% 有效输出时间估算，均摊 '+document.getElementById('bossParty').value+' 人；不含阶段机制，不是通关保证。':'HP 未证实，暂不计算 BA。'}<br><a href="${guide}" target="_blank" rel="noreferrer">${b.official?'官方公告 / 前置':'HP / Force 参考'} ↗</a></div></details>
+<div class="boss-actions"><button class="btn small" data-bskill="${b.id}" ${b.hpT==null?'disabled title="HP 未核实，不能自动带入"':''}>带入 Skill BA</button>${!b.future&&!b.noCrystal?`<button class="btn small" data-add="${b.id}" ${!havePrice?'disabled title="Crystal 价格待核实，请先在 Crystal 页填价"':''}>${s.selected[b.id]?'移出 Crystal':'加入 Crystal'}</button>`:'<span class="hint">预告内容 · 不计 Crystal</span>'}</div></article>`}
+renderBosses=function(){const q=$('search').value.trim().toLowerCase(),f=$('bossfreq').value,g=$('bossStage').value;const list=B.filter(b=>(f==='all'||b.freq===f)&&(g==='all'||b.tier===g||g==='future'&&b.future)&&`${b.name} ${b.mode} ${b.note}`.toLowerCase().includes(q));const order={beginner:0,mid:1,end:2,future:3};list.sort((a,b)=>(order[a.tier]??3)-(order[b.tier]??3)||a.level-b.level||a.name.localeCompare(b.name)||a.mode.localeCompare(b.mode));$('bossCount').textContent=`${list.length} / ${B.length} 个难度条目 · ${new Set(B.map(x=>x.name)).size} 种 Boss`;$('bosslist').innerHTML=list.map(bossCard54).join('')||'<p class="hint">没有符合条件的 Boss，试着清空查找。</p>';
+const ready=B.filter(b=>!b.future&&b.level<=Number(s.profile.level||0));$('bossProgress').innerHTML=`<div class="row" style="flex-wrap:wrap"><div><strong>${esc(currentJob().name)} · Lv.${s.profile.level}</strong><p class="hint" style="margin:4px 0">已达入场等级：${ready.length} 个难度（不是已能通关）。请先从可以稳定 Clear 的 Boss 开始，不追全清。</p></div><button class="btn small" data-go="passes">看 Pass 建议</button></div>`;
+$('bosslist').querySelectorAll('[data-add]').forEach(el=>el.onclick=()=>{const b=B.find(x=>x.id===el.dataset.add);if(b&&(b.price!=null||Number(s.prices[b.id])>0)){toggle(b.id);renderBosses()}});
+$('bosslist').querySelectorAll('[data-bskill]').forEach(el=>el.onclick=()=>{const b=B.find(x=>x.id===el.dataset.bskill);if(b?.hpT==null)return;const p=classParams();p.targetBoss=b.id;p.bossHp=b.hpT;p.pdr=b.pdr||300;save();loadSkillForm();jump('skills')});$('bossProgress').querySelector('[data-go]').onclick=()=>jump('passes');};
+// Rebind the pre-existing search/filter handlers after replacing renderBosses.
+$('search').oninput=renderBosses;
+$('bossfreq').onchange=renderBosses;
+// The original Skill Lab selector was built before the new Boss records were appended.
+$('skillTargetBoss').innerHTML=B.filter(x=>x.freq!=='daily'&&!x.future).map(b=>`<option value="${b.id}">${esc(b.name)} · ${esc(b.mode)}</option>`).join('');
+$('skillTargetBoss').value=classParams().targetBoss||'nlotus';
+for(const id of ['bossStage','bossParty','bossTargetMin'])$(id).addEventListener('change',renderBosses);
+// Crystal page must never silently treat unverified price as an authoritative zero.
+renderCrystal=function(){document.querySelectorAll('.chip').forEach(c=>c.classList.toggle('on',c.dataset.filter===filter));const xs=B.filter(b=>b.freq===filter&&!b.future&&!b.noCrystal);$('crystallist').innerHTML=xs.map(b=>{const known=b.price!=null||Number(s.prices[b.id])>0;return `<div class="boss"><div class="row"><label style="display:flex;align-items:center;gap:9px"><input type="checkbox" data-pick="${b.id}" ${s.selected[b.id]?'checked':''} ${!known?'disabled':''}><span><strong>${esc(b.name)}</strong> <span class="muted">${esc(b.mode)}</span></span></label><span class="pill ${known?'blue':'gold'}">${known?filter.toUpperCase():'售价未核实'}</span></div><div class="selectrow"><label>人数<select data-party="${b.id}">${[1,2,3,4,5,6].map(n=>`<option value="${n}" ${(s.party[b.id]||1)===n?'selected':''}>${n} 人</option>`).join('')}</select></label><label>Solo 售价（Meso，自己确认）<input aria-label="Solo 售价 Meso" type="number" min="0" step="1" data-price="${b.id}" value="${known?price(b):''}" placeholder="待游戏内核对"></label></div><div class="meta">${known?'Solo '+compact(price(b))+' Meso ｜ 实得 '+compact(Math.floor(price(b)/(s.party[b.id]||1)))+' / 次':'未核实，输入 Collector 实际售价后才能加入计算。'}</div></div>`}).join('');
+$('crystallist').querySelectorAll('[data-pick]').forEach(el=>el.onchange=()=>toggle(el.dataset.pick));$('crystallist').querySelectorAll('[data-party]').forEach(el=>el.onchange=()=>{s.party[el.dataset.party]=+el.value;save();renderCrystal()});$('crystallist').querySelectorAll('[data-price]').forEach(el=>el.onchange=()=>{const n=Number(el.value);if(el.value.trim()===''||!Number.isFinite(n)||n<=0){delete s.prices[el.dataset.price];delete s.selected[el.dataset.price]}else{s.prices[el.dataset.price]=Math.round(n)}save();renderCrystal();renderBosses()});calculate();};
+// Prevent old stale selections (or zero prices) from affecting totals.
+Object.keys(s.selected).forEach(id=>{const b=B.find(x=>x.id===id);if(!b||b.future||b.noCrystal||b.price==null&&!Number(s.prices[id]))delete s.selected[id]});
+
+/* v5.4 PASS GUIDE. No arbitrary Maple Cash to RM exchange rate. */
+const PASS54=[
+{id:'free',name:'Free Events / Free Tier',status:'v255 正式开放',badge:'先做',rank:'00',stage:1,why:'先拿免费签到、Hyper Burning、Mission Ultima 和成长支援。',benefit:'新 Kaiser 在 Challengers World 可拿丰富的免费成长资源。',elig:'活动要求依 World / Level / 新建角色而异，先看 Events。',oldPrice:'免费',link:'https://www.maplesea.com/updates/view/v255_UND/',noBuy:true},
+{id:'mush',name:'Hyper Mushroom Pass',status:'v255 价格已确认',badge:'新 Kaiser 可考虑',rank:'01',stage:2,why:'先使用免费档，确认会长期玩 Kaiser 才购买付费档。',benefit:'Premium 奖励至 Lv.270、Hyper 奖励至 Lv.285；购买两档有叠加 EXP / 普通怪伤害加成。',elig:'仅限 v255 后新建的 Challengers World 角色，指定角色仅一次，删除无法重新参加。',oldPrice:'Premium 49,800 Maple Points；Hyper 49,800 Maple Points（各自计价）',link:'https://www.maplesea.com/updates/view/v255_HMP/'},
+{id:'genesis',name:'Genesis Pass',status:'12 Nov 开售',badge:'后期再看',rank:'02',stage:3,why:'新账号不建议现在买；先练到 Lv.255 并推进 Genesis Weapon 解放。',benefit:'Genesis 解放任务的 Trace of Darkness 加速。',elig:'Lv.255+ 且满足指定 Genesis Weapon Quest 进度；不能已完成解放。',oldPrice:'30,000 Maple Cash',link:'https://www.maplesea.com/updates/view/v255_EP/'},
+{id:'sol',name:'Sol Erda Booster Max',status:'11/11 奖励升级',badge:'六转再考虑',rank:'03',stage:4,why:'先玩到六转，确认每天会登录领取才考虑。',benefit:'11/11 后每日 Sol Erda Energy 1,000，Fragments 30；每月最多每 PassportID 1 次。',elig:'请以 Cash Shop 当前商品资格和价格为准。',oldPrice:'请在游戏 Cash Shop 核对现价',link:'https://www.maplesea.com/announcements/view/v255_SEBM/'},
+{id:'momentum',name:'Momentum Pass PLUS',status:'11/11 正式上线',badge:'Lv.280 后再看',rank:'04',stage:5,why:'Lv.280+ 才有资格，新 Kaiser 先不用考虑。',benefit:'Premium/Prime 可分别追加领取奖励；需要约三周完成全部奖励。',elig:'Lv.280+，每 Maple ID 仅一个角色参加；活动至 12/15。',oldPrice:'Premium 29,800 Maple Cash；Prime 39,800 Maple Cash',link:'https://www.maplesea.com/updates/view/v255_EP/'},
+];
+if(!s.passV54||typeof s.passV54!=='object')s.passV54={planned:{},pricesRM:{},other:0};
+const passState=s.passV54;function passLv(){return Math.max(1,Number(s.profile.level||1))}
+function passTip(p){const lv=passLv();if(p.id==='free')return '建议今天先做';if(p.id==='mush')return lv<260?'11/11 先核对资格':'先看还剩哪些 Lv.260+ 奖励';if(p.id==='genesis')return lv<255?'Lv255 之后再看':'先确认 Genesis 解放任务是否开始';if(p.id==='sol')return lv<260?'Lv260 + 六转后再说':'六转后、确认会每天领取才考虑';return '暂不购买'}
+function passCard(p){const planned=!!passState.planned[p.id],paid=p.noBuy?'':Number(passState.pricesRM[p.id]||0);return `<article class="pass-item ${p.rank==='01'?'top-pass':''}"><div class="row" style="align-items:start;gap:7px"><div><span class="hint">优先级 ${p.rank}</span><div class="pass-name">${esc(p.name)}</div></div><span class="pill ${p.id==='mush'?'':'blue'}">${esc(p.badge)}</span></div><div class="boss-tags"><span>${esc(p.status)}</span><span>${esc(passTip(p))}</span></div><p><strong>${esc(p.why)}</strong></p><div class="pass-note">🎁 ${esc(p.benefit)}<br><br>条件：${esc(p.elig)}<br>价格：${esc(p.oldPrice)}</div><div class="pass-bottom"><a href="${p.link}" target="_blank" rel="noreferrer" style="font-size:12px;color:var(--blue)">核对官方信息 ↗</a>${p.noBuy?'<span class="pill">无需付费</span>':`<label style="font-size:12px;display:flex;gap:5px;align-items:center"><input type="checkbox" data-passplan="${p.id}" ${planned?'checked':''} style="width:17px;height:17px"> 考虑购买</label><label class="pass-price">实付 RM <input type="number" min="0" step="1" data-passrm="${p.id}" placeholder="待查价" value="${paid||''}" ${!planned?'disabled':''}/></label>`}</div></article>`}
+function renderPasses(){if(!$('passCards'))return;$('passLevel').textContent='Lv.'+passLv();$('passTop').textContent=passLv()<255?'免费 + Hyper Mush 候选':passLv()<260?'Hyper Mush / Genesis':'按 HEXA 与解放阶段挑选';$('passCards').innerHTML=PASS54.map(passCard).join('');$('passOtherSpend').value=passState.other??0;
+$('passCards').querySelectorAll('[data-passplan]').forEach(el=>el.onchange=()=>{passState.planned[el.dataset.passplan]=el.checked;save();renderPasses()});$('passCards').querySelectorAll('[data-passrm]').forEach(el=>el.onchange=()=>{passState.pricesRM[el.dataset.passrm]=Math.max(0,+el.value||0);save();renderPasses()});renderPassBudget()}
+function renderPassBudget(){const planned=PASS54.filter(x=>passState.planned[x.id]);const total=planned.reduce((acc,x)=>acc+Math.max(0,Number(passState.pricesRM[x.id])||0),0),other=Math.max(0,Number(passState.other)||0),remaining=300-other-total;$('passSpend').textContent='RM'+total.toFixed(0);$('passRemaining').textContent='RM'+remaining.toFixed(0);$('passRemaining').style.color=remaining<0?'#f6af91':'var(--accent)';$('passBudgetStatus').textContent=remaining<0?'超过预算':planned.length?'先确认售价 / 能否领满':'未计划消费';}
+$('passOtherSpend').addEventListener('change',e=>{passState.other=Math.max(0,+e.target.value||0);save();renderPassBudget()});
+const advice54=renderAdvice;renderAdvice=function(){advice54();renderPasses()};
+const passBtn54=document.querySelector('[data-go="passes"]');document.querySelectorAll('[data-go="passes"]').forEach(el=>el.onclick=()=>jump('passes'));
+renderBosses();renderCrystal();renderPasses();
+
+// v5.4.1: extended SEA stat label matching for IED / Boss Monster Damage.
+// API keys remain in-memory only; never saved to localStorage or backups.
+// v5.3: voluntary MapleStorySEA character import. No API key enters save state, storage, or backup.
+(function(){
+'use strict';
+const endpoint='https://open.api.nexon.com/maplestorysea/v1';
+const $s=id=>document.getElementById(id);
+const toNum=v=>{const n=Number(String(v??'').replace(/[,\s%]/g,''));return Number.isFinite(n)?n:null};
+const status=(message,type='normal')=>{const el=$s('syncFeedback');el.dataset.type=type;el.textContent=message};
+let preview=null;
+let ign=$s('syncIgn');
+// IGN is a simple preference, distinct from actual verified API profile data.
+ign.value=s.profile.ign||'iiBabyYato';
+ign.addEventListener('change',()=>{const v=ign.value.trim();if(v){s.profile.ign=v;save()}});
+function normalize(s){return String(s||'').toLowerCase().replace(/[^a-z0-9]/g,'')}
+const aliases={
+ 'bladmaster':'dualblade','blademaster':'dualblade','dualblader':'dualblade',
+ 'archmagefirepoison':'firepoison','archmagefp':'firepoison',
+ 'archmagelightningice':'ice lightning','archmageicelightning':'icelightning','archmageil':'icelightning',
+ 'bishop':'bishop','nightlord':'nightlord','nightwalker':'nightwalker',
+ 'soulmaster':'dawnwarrior','striker':'thunderbreaker','captain':'corsair',
+ 'shadower':'shadower','eunwol':'shade','viper':'buccaneer','canoneer':'cannoneer',
+ 'cannonmaster':'cannoneer','firepoison':'firepoison','ice lightning':'icelightning',
+ 'hero':'hero','darkknight':'darkknight','paladin':'paladin','bowmaster':'bowmaster',
+ 'windbreaker':'windarcher','flamewizard':'blazewizard','len':'ren'
+};
+function matchJob(name){const n=normalize(name);if(!n)return null;const direct=JOBS_V52.find(j=>normalize(j.name)===n||normalize(j.id)===n||normalize(j.name.split(' (')[0])===n);if(direct)return direct;
+ const mapped=aliases[n];if(mapped)return JOBS_V52.find(j=>normalize(j.id)===normalize(mapped))||null;
+ // Last-resort only if the class uniquely matches a complete job token.
+ const xs=JOBS_V52.filter(j=>normalize(j.name).startsWith(n)&&n.length>=5);return xs.length===1?xs[0]:null;
+}
+// Nexon sometimes uses different English labels for the same MapleStorySEA stat.
+// Match exact aliases first, then tightly-scoped synonyms. Do not fabricate missing values.
+function statRows(raw){return Array.isArray(raw?.final_stat)?raw.final_stat:Array.isArray(raw?.finalStat)?raw.finalStat:[]}
+function statMap(raw){let m={};for(const x of statRows(raw)){const name=normalize(x.stat_name??x.statName);if(name)m[name]=toNum(x.stat_value??x.statValue)}return m}
+function findMatchingStat(m,kind){
+ for(const [name,value] of Object.entries(m)){
+  if(value==null)continue;
+  if(kind==='ied'){
+   if(/element|resist|reduction/.test(name))continue;
+   if(name==='ied'||(/ignor|ignore/.test(name)&&/def|defense|defence/.test(name))){if(value>=0&&value<=100)return value}
+  }
+  if(kind==='boss'){
+   if(/normal|nonboss|critical|reduction|resist/.test(name))continue;
+   if((/boss/.test(name)&&/damage/.test(name))&&value>=0&&value<=10000)return value;
+  }
+ }
+ return null;
+}
+function readStats(data){let basic=data.basic||data.character_basic||{},stats=data.stat||data.character_stat||{},m=statMap(stats);
+ const officialName=String(basic.character_name??basic.characterName??'').trim(), officialClass=String(basic.character_class??basic.characterClass??'').trim();
+ const level=toNum(basic.character_level??basic.characterLevel),world=String(basic.world_name??basic.worldName??'').trim();
+ const job=matchJob(officialClass);
+ const get=(...keys)=>{for(const k of keys){const v=m[normalize(k)];if(v!=null)return v}return null};
+ const cpRaw=get('Combat Power','CombatPower');
+ const ied=get('Ignore Defense','Ignore Enemy Defense','Ignore Monster Defense','Ignore Enemy DEF','IED','Defense Ignore Rate',
+  'Ignore DEF','Ignore Def.','Ignore DEF Rate','Ignore DEF (%)','Ignore Monster DEF','Ignore Monster DEF Rate',
+  'Ignore Enemy Defense Rate','Ignore Monster Defense Rate','Ignore Enemy DEF Rate','Defense Ignored','DEF Ignored','DEF Ignored (%)','Defense Ignore',
+  "Ignore Monster's DEF","Ignore Monster's Defense")??findMatchingStat(m,'ied');
+ const af=get('Arcane Force','ARC','Arcane Power'),auth=get('Authentic Force','Authentic Power');
+ const str=get('STR'),dex=get('DEX'),int=get('INT'),luk=get('LUK'),hp=get('HP','Max HP');
+ let main=null;
+ if(job){if(job.stat==='STR+DEX+LUK'&&[str,dex,luk].every(v=>v!=null)) main=str+dex+luk;
+ else if(job.stat==='HP')main=hp;
+ else main={STR:str,DEX:dex,INT:int,LUK:luk}[job.stat]??null}
+ const att=get('Attack Power','ATT','Attack'),matt=get('Magic Attack','Magic Power','MATT','Magic ATT');
+ const useMATT=(job&&job.stat==='INT');
+ const finalDamage=get('Final Damage','Final Damage %');
+ const boss=get('Boss Damage','Boss Damage %','Boss Monster Damage','Boss Monster Damage %','Boss Monster Damage Rate',
+  'Boss Damage Rate','Boss Damage Increase','Boss Damage Bonus','Damage to Boss Monsters','Damage Against Bosses','Boss Enemy Damage')??findMatchingStat(m,'boss');
+ const damage=get('Damage','Damage %');
+ const critRate=get('Critical Rate','Critical Chance'),critDmg=get('Critical Damage','Critical Damage %');
+ const characterImage=String(basic.character_image??'');
+ const statLabels=statRows(stats).map(x=>String(x.stat_name??x.statName??'').trim()).filter(Boolean);
+ return {name:officialName,officialClass,level,world,job,cpRaw,ied,af,auth,main,att:useMATT?matt:att,boss,damage,finalDamage,critRate,critDmg,characterImage,statCount:Object.keys(m).length,statLabels,sourcedAt:Date.now()};
+}
+function nice(x){return x==null?'未提供':compact(x)}
+function drawPreview(r){const fields=[['世界',r.world||'—'],['职业',r.officialClass||'—'],['Level',r.level==null?'—':'Lv.'+r.level],['Combat Power',r.cpRaw==null?'—':compact(r.cpRaw)],['IED',r.ied==null?'—':r.ied+'%'],['Arcane Force',r.af==null?'—':format(r.af)],['Main Stat',nice(r.main)],['ATT / M.ATT',nice(r.att)],['Boss Damage',r.boss==null?'—':r.boss+'%']];
+ const missing=[];if(r.ied==null)missing.push('IED');if(r.boss==null)missing.push('Boss Damage');
+ const diagnostics=missing.length?'<p class="hint" style="color:#f6cf7b;margin-top:8px">⚠️ '+esc(missing.join(' / '))+' 未能从 API 属性中识别；不会覆盖你原先的数值。</p>'+
+  '<details style="margin-top:8px"><summary class="hint" style="cursor:pointer">查看 API 返回的属性名称（不含数值或 Key）</summary><p class="hint">'+(r.statLabels||[]).map(esc).join(' · ')+'</p></details>':'';
+ $s('syncPreview').innerHTML='<div class="headline">'+esc(r.name||ign.value.trim())+'</div><div class="hint">'+(r.statCount?'官方属性字段 '+r.statCount+' 项':'仅角色基础资料；未含 Stat API')+'</div>'+fields.map(([k,v])=>'<div class="sync-stat">'+esc(k)+'<strong>'+esc(v)+'</strong></div>').join('')+diagnostics+(r.job?'':'<p class="hint" style="color:#f6cf7b">职业未匹配到 Coach 列表，会保留你原来的职业设置。</p>');
+ $s('syncApply').disabled=!(r.name&&Number.isFinite(r.level)&&r.level>0);
+}
+function verifiedData(raw){if(!raw||typeof raw!=='object')throw Error('无效 JSON');const d=readStats(raw);if(!d.name||!d.level)throw Error('读取的 JSON 没有完整的 character_name / character_level（需要 basic 资料）。');const input=ign.value.trim();if(input&&normalize(d.name)!==normalize(input))throw Error('官方角色名 '+d.name+' 与输入的 IGN '+input+' 不符，请检查。');return d}
+async function call(path,key){const res=await fetch(endpoint+path,{method:'GET',headers:{'x-nxopen-api-key':key},cache:'no-store',credentials:'omit'});let data;try{data=await res.json()}catch{throw Error('Nexon 没有返回可读取的 JSON（HTTP '+res.status+'）。')}
+ if(!res.ok||data?.error){const e=data?.error;throw Error('Nexon API HTTP '+res.status+(e?.name?' · '+e.name:'')+(e?.message?' · '+String(e.message).slice(0,140):''))}return data}
+$s('syncFetch').addEventListener('click',async()=>{
+ const key=$s('syncKey').value.trim(),name=ign.value.trim();if(!name){status('请填写 IGN。','error');return}if(!key){status('需要自己的 Nexon Open API Key；不需要游戏账号密码。','error');return}
+ const btn=$s('syncFetch');btn.disabled=true;btn.textContent='正在联系 Nexon…';preview=null;$s('syncApply').disabled=true;
+ status('正在从 Nexon 查询 '+name+' …');
+ try{const idData=await call('/id?character_name='+encodeURIComponent(name),key);const ocid=idData?.ocid;if(!ocid)throw Error('没有获得角色 OCID，可能尚未被 API 收录。');
+ const basic=await call('/character/basic?ocid='+encodeURIComponent(ocid),key);
+ let stat=null;try{stat=await call('/character/stat?ocid='+encodeURIComponent(ocid),key)}catch(e){status('基本资料读取成功，但详细属性请求失败：'+e.message+'（仍可同步等级/职业）。','error')}
+ const r=verifiedData({basic,stat});preview=r;drawPreview(r);status('成功读取官方角色资料。请确认后按「确认同步到 Coach」。','success');
+ }catch(e){const msg=String(e&&e.message||e);status(msg==='Failed to fetch'||/networkerror|load failed/i.test(msg)?'浏览器无法连接 Nexon：可能是网络或 CORS 跨站限制，尤其直接打开 file:// 网页时。可改用 localhost 或下方 JSON 导入。':'查询失败：'+msg,'error')}
+ finally{btn.disabled=false;btn.textContent='连接 Nexon，查看角色资料'}
+});
+$s('syncClearKey').onclick=()=>{$s('syncKey').value='';status('API Key 已从输入框清空，网页不会把它存档。')};
+$s('syncOpenPath').onclick=()=>jump('path');
+$s('syncImportJson').onclick=()=>{try{const raw=JSON.parse($s('syncJson').value.trim());preview=verifiedData(raw);drawPreview(preview);status('JSON 已读取，请确认后同步。','success')}catch(e){preview=null;$s('syncApply').disabled=true;status('JSON 导入失败：'+e.message,'error')}};
+$s('syncApply').onclick=()=>{
+ if(!preview){status('请先读取角色资料。','error');return}const r=preview;
+ s.profile.ign=r.name;s.profile.syncedAt=new Date(r.sourcedAt).toISOString();s.profile.world=r.world||s.profile.world||'';
+ if(r.level!=null)s.profile.level=Math.max(1,Math.round(r.level));
+ if(r.job)s.profile.job=r.job.id;
+ if(r.cpRaw!=null)s.profile.cp=Number((r.cpRaw/1e6).toFixed(4));
+ if(r.ied!=null)s.profile.ied=r.ied;
+ if(r.af!=null)s.profile.af=r.af;
+ if(r.main!=null)s.profile.stat=r.main;
+ if(r.job){const v=classParams();if(r.main!=null)v.main=r.main;if(r.att!=null)v.att=r.att;
+  for(const [p,n] of [['boss','boss'],['damage','damage'],['finalDamage','final'],['critRate','critRate'],['critDmg','critDmg'],['ied','ied']]){if(r[p]!=null)v[n]=r[p]}}
+ save();for(const id of ['level','cp','ied','af','stat','bLevel','bCp']){const key=id==='bLevel'?'level':id==='bCp'?'cp':id;if($s(id))$s(id).value=s.profile[key]??''}
+ ign.value=r.name;renderAdvice();renderTasks();renderRoutine();renderBosses();renderStatPreview();renderJobSelectors();renderJobInfo();loadSkillForm();renderEvents();
+ $s('profileSyncStatus').textContent='已同步 '+r.name+' · Lv.'+r.level+' · '+(r.world||'MapleSEA')+' · '+new Date(r.sourcedAt).toLocaleString('en-MY');
+ status('已写入 Coach！去「成长路线 / Skill」即可看到自动填入的资料。','success');
+};
+if(s.profile.syncedAt){$s('profileSyncStatus').textContent='已同步 '+(s.profile.ign||'')+' · '+(s.profile.world||'MapleSEA')+' · '+new Date(s.profile.syncedAt).toLocaleString('en-MY')}
+})();
+
+/* v5.5 Focus page: Level box drives existing profile and event eligibility. */
+const importShortcut=document.getElementById("importShortcut");if(importShortcut)importShortcut.onclick=()=>document.getElementById("import")?.click();
+(function(){const x=document.getElementById('focusLevel');if(!x)return;
+ x.value=s.profile.level||10;
+ x.addEventListener('change',()=>{const lv=Number(x.value);if(!Number.isFinite(lv)||lv<1||lv>300)return;
+ s.profile.level=Math.round(lv);save();for(const id of ['level','bLevel'])if($(id))$(id).value=s.profile.level;
+ renderAdvice();renderBosses();renderRoutine();renderEvents();renderPasses();});
+})();
+
+/* v5.6 official MapleSEA crystal prices + minimal new-account planner */
+const V255_CRYSTAL_URL='https://www.maplesea.com/updates/view/v255_Content_01/';
+const OFFICIAL_V255_PRICES=[{"name":"Zakum","mode":"Easy","price":113843},{"name":"Zakum","mode":"Normal","price":348647},{"name":"Papulatus","mode":"Easy","price":389628},{"name":"Magnus","mode":"Easy","price":410975},{"name":"Ranmaru","mode":"Normal","price":426800},{"name":"Hilla","mode":"Normal","price":455376},{"name":"Horntail","mode":"Easy","price":512620},{"name":"Pierre","mode":"Normal","price":562603},{"name":"Von Bon","mode":"Normal","price":562603},{"name":"Crimson Queen","mode":"Normal","price":562603},{"name":"Vellum","mode":"Normal","price":562603},{"name":"Horntail","mode":"Normal","price":588466},{"name":"Von Leon","mode":"Easy","price":614909},{"name":"Arkarium","mode":"Easy","price":669542},{"name":"Kawoong","mode":"Normal","price":726501},{"name":"Horntail","mode":"Chaos","price":785783},{"name":"Pink Bean","mode":"Normal","price":816298},{"name":"Von Leon","mode":"Normal","price":847393},{"name":"Von Leon","mode":"Hard","price":1070000},{"name":"Arkarium","mode":"Normal","price":1110000},{"name":"Magnus","mode":"Normal","price":1160000},{"name":"Ranmaru","mode":"Hard","price":1180000},{"name":"Papulatus","mode":"Normal","price":1200000},{"name":"Hilla","mode":"Hard","price":1280000},{"name":"Pink Bean","mode":"Chaos","price":1320000},{"name":"Cygnus","mode":"Normal","price":1360000},{"name":"Zakum","mode":"Chaos","price":8080000},{"name":"Crimson Queen","mode":"Chaos","price":8140000},{"name":"Von Bon","mode":"Chaos","price":8150000},{"name":"Pierre","mode":"Chaos","price":8170000},{"name":"Vellum","mode":"Chaos","price":9280000},{"name":"Papulatus","mode":"Chaos","price":13500000},{"name":"Princess Nou","mode":"Normal","price":13400000},{"name":"Mitsuhide","mode":"Normal","price":17500000},{"name":"Lotus","mode":"Normal","price":18000000},{"name":"Damien","mode":"Normal","price":18500000},{"name":"Divine King Slime","mode":"Normal","price":25500000},{"name":"Lucid","mode":"Easy","price":29800000},{"name":"Will","mode":"Easy","price":32300000},{"name":"Lucid","mode":"Normal","price":35600000},{"name":"Will","mode":"Normal","price":41100000},{"name":"Dusk","mode":"Normal","price":44000000},{"name":"Djunkel","mode":"Normal","price":47500000},{"name":"Damien","mode":"Hard","price":54000000},{"name":"Lotus","mode":"Hard","price":57000000},{"name":"Lucid","mode":"Hard","price":68000000},{"name":"Dusk","mode":"Chaos","price":76000000},{"name":"Heretic Hilla","mode":"Normal","price":77000000},{"name":"Divine King Slime","mode":"Chaos","price":80000000},{"name":"Will","mode":"Hard","price":83500000},{"name":"Djunkel","mode":"Hard","price":100000000},{"name":"Heretic Hilla","mode":"Hard","price":113000000},{"name":"Chosen Serene","mode":"Normal","price":239000000},{"name":"Malicia","mode":"Normal","price":275000000},{"name":"Gatekeeper Kalos","mode":"Easy","price":305000000},{"name":"The First Adversary","mode":"Easy","price":324900000},{"name":"Chosen Serene","mode":"Hard","price":340000000},{"name":"Carling","mode":"Easy","price":349700000},{"name":"Gatekeeper Kalos","mode":"Normal","price":445500000},{"name":"The First Adversary","mode":"Normal","price":503500000},{"name":"Lotus","mode":"Extreme","price":558600000},{"name":"Radiant Malefic Star","mode":"Normal","price":564300000},{"name":"Black Mage","mode":"Hard","price":660000000},{"name":"Carling","mode":"Normal","price":577500000},{"name":"Limbo","mode":"Normal","price":900000000},{"name":"Gatekeeper Kalos","mode":"Chaos","price":1056000000},{"name":"Baldrix","mode":"Normal","price":1200000000},{"name":"The First Adversary","mode":"Hard","price":1260000000},{"name":"Jupiter","mode":"Normal","price":1360000000},{"name":"Carling","mode":"Hard","price":1232000000},{"name":"Limbo","mode":"Hard","price":1930000000},{"name":"Radiant Malefic Star","mode":"Hard","price":2143200000},{"name":"Chosen Serene","mode":"Extreme","price":1840000000},{"name":"Baldrix","mode":"Hard","price":2376000000},{"name":"Gatekeeper Kalos","mode":"Extreme","price":2565000000},{"name":"The First Adversary","mode":"Extreme","price":2920000000},{"name":"Jupiter","mode":"Hard","price":3000000000},{"name":"Carling","mode":"Extreme","price":3040000000},{"name":"Malicia","mode":"Extreme","price":3160000000},{"name":"Black Mage","mode":"Extreme","price":5680000000},{"name":"Bellona","mode":"Easy","price":396000000},{"name":"Bellona","mode":"Normal","price":824000000},{"name":"Bellona","mode":"Hard","price":2200000000}];
+const v255Aliases={
+  'Mori Ranmaru':'Ranmaru','Akechi Mitsuhide':'Mitsuhide',
+  'Guardian Angel Slime':'Divine King Slime','Giant Monster Gloom':'Dusk',
+  'Guard Captain Darknell':'Djunkel','Verus Hilla':'Heretic Hilla',
+  'Chosen Seren':'Chosen Serene','Kalos':'Gatekeeper Kalos',
+  'Kaling':'Carling','First Adversary':'The First Adversary',
+  'Malefic Star':'Radiant Malefic Star'
+};
+// Also include Kawoong: in the official table but missing from the older Boss Library.
+if(!B.some(b=>b.id==='kawoong'))B.push({id:'kawoong',name:'Kawoong',mode:'Normal',freq:'daily',price:null,level:180,cpLow:0,cpHigh:0,ied:0,af:0,note:'v255 官方售价已公布；入场前置以游戏内 Boss UI 为准。',hpT:null,pdr:0,sac:0,tier:'beginner',future:false,official:V255_CRYSTAL_URL});
+const canonicalV255=b=>((v255Aliases[b.name]||b.name)+'|'+b.mode);
+const officialLookup=new Map(OFFICIAL_V255_PRICES.map(x=>[x.name+'|'+x.mode,x.price]));
+// v255 removes Easy Cygnus and turns Hard Hilla, Chaos Pink Bean and Normal Cygnus into dailies.
+const removedEasyCygnus=B.findIndex(b=>b.id==='ecyg');if(removedEasyCygnus>=0)B.splice(removedEasyCygnus,1);
+for(const b of B){
+  const official=officialLookup.get(canonicalV255(b));
+  b.price=official===undefined?null:official;
+  b.priceSource=official===undefined?'not-listed':'MSEA-v255';
+  if(['hhilla','cpb','ncyg'].includes(b.id))b.freq='daily';
+  if(b.id==='cpap')b.priceWarning='公告中 Chaos Papulatus 重复列出 8.15M 与 13.5M。此处暂按后列 13.5M 计算，请用 Collector 核实。';
+  if(b.id==='hmag')b.priceWarning='v255 公告售价表未列出 Hard Magnus；不使用旧版价格。';
+  if(b.id==='omni')b.priceWarning='v255 公告未提供这个 Boss 的价格。';
+  if(['ebellona','nbellona','hbellona'].includes(b.id)){
+    b.future=true;b.note='v255 公告已预告 12 月 3 日推出 Bellona，11/11 尚未开放；售价已公布，开放前不计入收入。';
+  }
+  if(b.id==='maerin'){b.noCrystal=true;b.price=null;b.future=false;b.level=270;b.note='Challengers World 季节 Boss，Lv.270+；官方明确不掉落 Boss Crystal。';}
+}
+// Existing manual overrides are preserved. The reset button drops them and restores new official defaults.
+const priceResetV56=$('resetprices');if(priceResetV56)priceResetV56.onclick=()=>{
+  if(confirm('恢复 MapleSEA v255 官方售价？这会清空你自己改过的价格。')){
+    s.prices={};for(const id of Object.keys(s.selected)){const b=B.find(x=>x.id===id);if(!b||b.future||b.noCrystal||b.price==null)delete s.selected[id]}
+    save();renderCrystal();renderBosses();
+  }
+};
+// Manual boss entries from earlier versions that are missing in v255 list should not appear as zero silently.
+for(const id of Object.keys(s.selected)){
+  const b=B.find(x=>x.id===id);
+  if(!b||b.future||b.noCrystal||(b.price==null&&!(Number(s.prices[id])>0)))delete s.selected[id];
+}
+save();
+// User-friendly source provenance inside both Boss Library and Crystal pages.
+const officialV255Banner=`<a href="${V255_CRYSTAL_URL}" target="_blank" rel="noreferrer">打开 v255 官方 Boss Crystal 价格表 ↗</a><br>版本：2026-11-11 · 自定义数值仍可覆盖官方价。Chaos Papulatus 官方表出现两笔不同价格，暂按 13.5M，进游戏请核实。`;
+$('crystal').querySelector('.notice').insertAdjacentHTML('beforeend','<div style="margin-top:8px;font-size:12px">'+officialV255Banner+'</div>');
+$('bosses').querySelector('.notice').insertAdjacentHTML('beforeend',`<p class="hint"><a href="${V255_CRYSTAL_URL}" target="_blank" rel="noreferrer">11/11 官方 v255 Crystal / Boss 更新</a> · Boss HP 参考表仍需按 v255 减血幅度重新校准，因此 BA / HP 一律只作粗略参考。</p>`);
+// Warn on the one duplicate in the patch table; do not call it fully verified.
+const previousBossCard=bossCard54;
+bossCard54=function(b){let h=previousBossCard(b);if(b.priceWarning)h=h.replace('<div class="boss-tags">',`<div class="alert" style="margin-top:8px">${esc(b.priceWarning)}</div><div class="boss-tags">`);return h;};
+const previousRenderCrystalV56=renderCrystal;
+renderCrystal=function(){previousRenderCrystalV56();const cards=$('crystallist');cards.querySelectorAll('[data-price]').forEach(inp=>{
+  const b=B.find(x=>x.id===inp.dataset.price);
+  if(b?.priceWarning){const wrap=inp.closest('.boss');if(wrap){const n=document.createElement('p');n.className='hint';n.style.color='var(--gold)';n.textContent=b.priceWarning;wrap.appendChild(n)}}
+});};
+// v255 fixed: weekly/monthly boss battle limit is 20 min, not the older 30 min.
+const bossTimeSelect=$('bossTargetMin');
+if(bossTimeSelect && +bossTimeSelect.value>20)bossTimeSelect.value='20';
+// Include the new era's rules and support user at most 3 focused tasks on the home tab.
+const LINK_V56=[
+ {id:'mercedes',name:'Mercedes',skill:'Elven Blessing',effect:'EXP +10% / +15%（Lv.70 / 120）',why:'新账号长线升级必备',group:'core',tag:'升级'},
+ {id:'evan',name:'Evan',skill:'Rune Persistence',effect:'Rune EXP Buff 时间 +30% / +50%',why:'练级时更充分利用 Rune',group:'core',tag:'升级'},
+ {id:'da',name:'Demon Avenger',skill:'Wild Rage',effect:'Damage +5% / +10%',why:'Kaiser 打怪和打 Boss 都用得上',group:'core',tag:'泛用'},
+ {id:'phantom',name:'Phantom',skill:'Phantom Instinct',effect:'Critical Rate +10% / +15%',why:'只有 Critical Rate 不够时才优先',group:'core',tag:'条件'},
+ {id:'luminous',name:'Luminous',skill:'Light Wash',effect:'IED +10% / +15%',why:'开始挑战更高 PDR Boss 时再补',group:'core',tag:'Boss'},
+ {id:'aran',name:'Aran',skill:'Combo Kill Blessing',effect:'Combo Orb EXP +400% / +650%',why:'练很多小号时可选，非第一天必练',group:'optional',tag:'升级'},
+ {id:'ds',name:'Demon Slayer',skill:'Fury Unleashed',effect:'Boss Damage +10% / +15%',why:'开始稳定打周常 Boss 再补',group:'optional',tag:'Boss'},
+ {id:'kanna',name:'Kanna',skill:'Elementalism',effect:'Damage +5% / +10%',why:'万能输出加成；可替换低收益 Link',group:'optional',tag:'泛用'},
+ {id:'ark',name:'Ark',skill:'Solus',effect:'持续战斗叠加 Damage',why:'长时间刷怪或 Boss 时有效',group:'optional',tag:'泛用'},
+ {id:'ab',name:'Angelic Buster',skill:'Terms and Conditions',effect:'短时间内的主动爆发伤害加成',why:'会安排爆发循环后再练',group:'optional',tag:'爆发'},
+ {id:'kinesis',name:'Kinesis',skill:'Judgment',effect:'Critical Damage +2% / +4%',why:'中后期提升实战输出',group:'optional',tag:'Boss'}
+];
+if(!s.linkV56 || typeof s.linkV56!=='object')s.linkV56={world:'challengers',levels:{}};
+if(!s.linkV56.levels||typeof s.linkV56.levels!=='object')s.linkV56.levels={};
+function linkStage(id){const n=Number(s.linkV56.levels[id]);return [0,70,120,200].includes(n)?n:0}
+function linkTile(l){const lv=linkStage(l.id),next=lv===0?70:lv===70?120:lv===120?200:0;
+const button=lv===0?'完成 Lv.70':lv===70?'升到 Lv.120':lv===120?'可选 Lv.200':'已 Lv.200 · 重置';
+const step=lv===0?'尚未开始':`练到 Lv.${lv}`;
+return `<article class="link-item ${lv>=120?'link-finished':''}"><div class="row"><div><h3>${esc(l.name)}</h3><span class="link-why">${esc(l.skill)}</span></div><span class="pill ${l.tag==='升级'?'':'blue'}">${esc(l.tag)}</span></div><p>${esc(l.effect)}<br>${esc(l.why)}</p><div class="row"><span class="link-stage">${step}</span><button type="button" class="btn small ${lv===0?'primary':''}" data-link-advance="${l.id}" data-next="${next}">${button}</button></div></article>`;
+}
+function renderStarter(){
+  const w=s.linkV56.world==='aquila'?'aquila':'challengers';
+  document.querySelectorAll('[data-starter-world]').forEach(b=>b.classList.toggle('active',b.dataset.starterWorld===w));
+  const note=w==='challengers'
+   ? '<strong>重点：</strong>Challengers World 不能转移 Link Skill，也不能用 Maple Union。现在专注 Kaiser；练副号是为以后 World Leap 做准备，不会立即强化 Kaiser。'
+   : '<strong>普通世界：</strong>同 World 角色升到 Lv.70 / Lv.120 后，在 Beginner Skills → Link Management 指派给 Kaiser。Link Slot 最多 12 个；Union 自动计算符合等级的角色。';
+  $('starterWorldNote').innerHTML=note;
+  const steps=w==='challengers'?
+   [['确定 Kaiser 的 Hyper Burning','先练 Kaiser，领取免费 Hyper Mushroom / Mercenary Rewards；不用冲多只角色。'],
+    ['每天只做高回报活动','用「今天」页的 3 项清单，其他时间自由练功和打 Boss。'],
+    ['Kaiser 稳定后再创建副号','Challengers 最多 3 只 Tera Burning：建议 Mercedes、Evan、Demon Avenger；日后 World Leap 才启用共享 Link。']]:
+   [['先把 Mercedes / Evan 练到 Lv.70','开基础 EXP Link，再看要不要升到 Lv.120。'],
+    ['需要伤害才练 Demon Avenger','Boss 开始难打时，看 Critical Rate / IED 再补 Phantom、Luminous。'],
+    ['慢慢累积 Legion','优先把已练 Link 角色补到 Lv.200，不必每周冲一堆小号。']];
+  $('starterSteps').innerHTML=steps.map((a,i)=>`<div class="starter-step"><span class="starter-number">0${i+1}</span><div><strong>${esc(a[0])}</strong><p>${esc(a[1])}</p></div></div>`).join('');
+  $('linkCore').innerHTML=LINK_V56.filter(l=>l.group==='core').map(linkTile).join('');
+  $('linkOptional').innerHTML=LINK_V56.filter(l=>l.group==='optional').map(linkTile).join('');
+  const count=LINK_V56.filter(l=>l.group==='core'&&linkStage(l.id)>=120).length;
+  $('linkProgressCount').textContent=`${count} / 5 达到 Lv.120`;
+  $('linkIntro').textContent=w==='challengers'?'可以先用 Tera Burning 培养副号，但「Link 转移」要等回到 Aquila；这里先记录培养进度。':'等级 70 先解锁、120 再强化；需按实际打 Boss 属性决定练哪只，不用全部练。';
+  document.querySelectorAll('[data-link-advance]').forEach(el=>el.onclick=()=>{
+    s.linkV56.levels[el.dataset.linkAdvance]=Number(el.dataset.next)||0;save();renderStarter();
+  });
+}
+document.querySelectorAll('[data-starter-world]').forEach(el=>el.onclick=()=>{s.linkV56.world=el.dataset.starterWorld;save();renderStarter()});
+// The earlier nav handler assumes 4 main tabs. "starter" is now the 4th tab and Boss goes into More.
+// Use the existing generic jump() and route every [data-go] button to it again.
+document.querySelectorAll('[data-go]').forEach(b=>b.onclick=()=>jump(b.dataset.go));
+const prevRenderBossesV56=renderBosses;
+renderBosses=function(){prevRenderBossesV56();};
+renderCrystal();renderBosses();renderStarter();renderRoutine();
+</script></body></html>
